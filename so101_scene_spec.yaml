@@ -1,0 +1,360 @@
+project:
+  name: "SO-101 Real-World Scene Reconstruction"
+  purpose: >
+    Reconstruct the real SO-101 tabletop manipulation setup in Isaac Sim / Isaac Lab
+    for sim-to-real experiments.
+  units:
+    length: "meters"
+    mass: "kilograms"
+    angle: "degrees"
+
+visual_reference:
+  source_image: "real_scene.jpg"
+  observed_task_relevant_features:
+    - "The follower SO-101 printed parts are off-white; servo housings are dark gray / black."
+    - "The tabletop is dark, near-black, matte, and has a visible panel seam."
+    - "The target is a bright red plush ball."
+    - "The receptacle is shallow transparent molded plastic."
+  simulation_scope:
+    include:
+      - "Follower SO-101, tabletop, target ball, receptacle, and virtual observation cameras."
+    exclude:
+      - "Leader arm visible on the right side of the reference image."
+      - "Office background, chair, scissors, cables, and unrelated tabletop clutter."
+      - "Visible geometry for the fixed camera body and support stand."
+  notes:
+    - >
+      Camera prims remain in USD as invisible virtual sensors. Do not construct
+      camera or support-stand geometry unless it is later shown to enter a real
+      observation image.
+    - >
+      Do not record metric positions or camera extrinsics inferred from the
+      single photograph as measurements. Any photo-derived layout must remain
+      explicitly marked as a visual placeholder until measured.
+  photo_layout_placeholders_in_base_frame:
+    status: "approximate visual alignment only; not measured"
+    bowl_center_xy: [0.22, 0.23]
+    photo_ball_state: "centered inside the bowl"
+    task_ready_ball_center_xy: [0.11, 0.30]
+
+coordinate_system:
+  origin: "SO-101 base center"
+  x_axis: "along the long edge of the table"
+  y_axis: "from the robot mounting edge toward the inside of the table"
+  z_axis: "upward"
+  note: >
+    Exact sign of X can be chosen consistently during implementation.
+    Do not change the Y/Z convention above.
+
+table:
+  dimensions:
+    length: 1.00
+    width: 0.60
+    tabletop_thickness: 0.010
+  tabletop_height_from_floor: 0.735
+  material:
+    type: "composite board"
+    appearance: "dark / near-black tabletop"
+  geometry_if_floor_z_is_zero:
+    tabletop_top_z: 0.735
+    tabletop_bottom_z: 0.725
+    tabletop_center_z: 0.730
+  notes:
+    - "The real tabletop has visible seams / non-uniform surface appearance."
+    - "For the first simulation version, a simple rectangular cuboid is sufficient."
+    - "Visual texture can be randomized later for vision sim-to-real."
+    - >
+      The real table is a height-adjustable desk with two T-shaped pedestals.
+      Frame dimensions are not measured, so the simulation uses two simple dark
+      static placeholders; their column, foot, support, and inset dimensions are
+      not calibration values.
+robot:
+  model: "SO-101"
+  source: "official robot model"
+  use_official_geometry: true
+
+  mounting:
+    mounted_edge: "one long edge of the table"
+    mounting_style: "base is flush against the table edge"
+    orientation: "facing straight into the table"
+    yaw_deg: 0
+
+  measured_along_table_length:
+    table_left_edge_to_robot_base_left_edge: 0.72
+    robot_base_right_edge_to_table_right_edge: 0.185
+
+  derived:
+    robot_base_width_along_table_length: 0.095
+    robot_base_center_from_table_left_edge: 0.7675
+    robot_base_center_from_table_right_edge: 0.2325
+
+  notes:
+    - >
+      Do not manually rebuild SO-101 link or gripper geometry unless the official
+      model is found to differ from the real hardware.
+    - >
+      Since the base is flush against the mounting edge, use the official model's
+      base geometry to align it with the table edge.
+
+target_object:
+  name: "red plush ball"
+  primitive_shape_for_first_sim: "sphere"
+
+  geometry:
+    diameter: 0.060
+    radius: 0.030
+
+  mass: 0.00481
+
+  material:
+    visual:
+      color: "red"
+      surface: "plush / fibrous"
+    physical:
+      description: "soft, fuzzy surface with relatively high friction"
+
+  simulation_notes:
+    - >
+      For the first version, model it as a rigid sphere.
+    - >
+      Do not attempt deformable-body simulation initially.
+    - >
+      Use friction higher than a smooth hard-plastic sphere and tune empirically.
+    - >
+      Initial ball position is NOT fixed and may be randomized.
+
+receptacle:
+  name: "transparent plastic bowl"
+
+  geometry:
+    outer_top_diameter: 0.120
+    inner_bottom_diameter: 0.060
+    height: 0.042
+    wall_thickness: 0.0015
+
+  mass: 0.02139
+
+  material:
+    type: "transparent plastic"
+
+  real_shape_notes:
+    - "Shallow bowl."
+    - "Approximately tapered / bowl-shaped."
+    - "Top rim has flower-like / scalloped geometry."
+    - "Surface contains decorative embossed patterns."
+
+  simulation_notes:
+    - >
+      Ignore embossed decorative patterns in the first version.
+    - >
+      Ignore detailed scalloped rim geometry initially if unnecessary.
+    - >
+      Approximate using a simple hollow bowl / truncated-cone-like collision shape.
+    - >
+      Bowl position is NOT fixed and may be randomized.
+    - >
+      If bowl is treated as stationary during the task, it may be implemented as
+      a static collider; otherwise use the measured mass.
+
+cameras:
+  common:
+    count: 2
+    same_hardware_model: true
+    capture_resolution:
+      width: 640
+      height: 480
+    fps: 30
+    aspect_ratio: "4:3"
+
+    calibration:
+      required_intrinsics:
+        - fx
+        - fy
+        - cx
+        - cy
+        - distortion_coefficients
+      note: >
+        Do not rely only on manufacturer FOV specifications.
+        Calibrate the cameras at the actual 640x480 capture mode.
+
+  top_down_camera:
+    type: "fixed overhead / top-down camera"
+
+    approximate_measurements:
+      vertical_distance_from_tabletop: 0.52
+
+    horizontal_measurements:
+      status: "approximate / not fully referenced"
+      values:
+        - 0.22
+        - 0.22
+      warning: >
+        Two horizontal distances were measured as approximately 22 cm,
+        but their exact reference edges / coordinate interpretation have not yet
+        been formally recorded. Do NOT treat these as exact X/Y extrinsics.
+
+    required_final_extrinsic:
+      transform: "T_base_to_top_camera"
+
+    recommended_method:
+      - "Use checkerboard or AprilTag calibration."
+      - "Estimate full camera position and rotation rather than relying on ruler measurements."
+
+  wrist_camera:
+    type: "camera rigidly mounted near/on the gripper or wrist"
+
+    mounting:
+      description: >
+        Camera is mounted on a custom bracket near the gripper/wrist.
+        This bracket may not exist in the official SO-101 model.
+
+    important_rule:
+      - >
+        Do NOT model the wrist camera as having a fixed pose relative to the table/world.
+      - >
+        The relevant fixed extrinsic is relative to the gripper/wrist link.
+
+    required_final_extrinsic:
+      transform: "T_gripper_to_wrist_camera"
+
+    recommended_method:
+      - "Perform hand-eye calibration."
+      - "Use 15-25 diverse robot poses."
+      - "Capture an AprilTag/checkerboard from different positions and orientations."
+      - "Record robot joint positions for each image."
+      - "Use FK from the official SO-101 model."
+      - "Solve for the fixed gripper-to-camera transform."
+
+tactile:
+  model: "DP-S2015-Elite"
+  product_code: "PXSR-STDDP03G"
+  count: 2
+
+  installation:
+    locations:
+      - "fixed fingertip"
+      - "moving fingertip"
+    orientation: "active surfaces face each other across the grasp gap"
+    real_mount: >
+      Each sensor is installed on a custom metal finger extension. Exact mount
+      dimensions and CAD have not yet been measured or copied into this project.
+
+  housing:
+    length: 0.020
+    width: 0.015
+    depth: 0.010
+    mounting_holes: "4 x M1.4, depth 2 mm"
+    # The drawing specifies the envelope but not the dome equation/exponents.
+    # These shape exponents are configurable visual/collision placeholders.
+    dome_footprint_exponent_placeholder: 4.0
+    dome_profile_exponent_placeholder: 2.0
+    dome_radial_segments: 16
+    dome_angular_segments: 64
+
+  signal:
+    taxel_count: 52
+    axes_per_taxel: 3
+    aggregate_force_axes: 3
+    normal_force_range: [0.0, 25.0]
+    shear_force_range: [-10.0, 10.0]
+    resolution: 0.1
+    minimum_detectable_force: 0.1
+    # Datasheet says 83.3 Hz, but the recorded device runs faster: the raw
+    # sidecars in Jingyi-Z/sotac have a median inter-sample interval of
+    # 11.00 ms across episodes 0/1/2/5/10, i.e. 90.9 Hz, with frame_status
+    # clean throughout.  Measured wins over the datasheet.
+    output_frequency_hz: 90.9
+    datasheet_output_frequency_hz: 83.3
+    accuracy: "1% full scale"
+    spatial_resolution: 0.001
+
+  interface:
+    supported:
+      - "SPI"
+      - "UART 921600"
+      - "I2C <= 200 kHz"
+      - "USB through adapter board"
+    ros_driver_available: false
+
+  first_sim_mvp:
+    output: "per-fingertip aggregate Fx/Fy/Fz only"
+    physics_frequency_hz: 240.0
+    default_gripper_open_deg: 10.0
+    contact_region_radius_placeholder: 0.016
+    geometry: >
+      Use a closed double-curvature superellipsoidal dome within the measured
+      20 x 15 x 10 mm envelope. Its rounded-rectangle footprint continuously
+      arches from the active apex to the flat mounting plane. Shape exponents
+      remain placeholders until manufacturer CAD is available; 52 taxel
+      positions still require CAD or a coordinate table.
+    mounting: >
+      Treat the sensor envelope as part of a configurable modified fingertip.
+      Align each active surface with the current stock SO-101 inner fingertip
+      surface until the custom metal finger-extension geometry is measured.
+
+physics:
+  gravity: "standard Earth gravity"
+
+  table_contact:
+    static_friction: "unknown; tune or measure experimentally"
+    dynamic_friction: "unknown; tune experimentally"
+
+  ball_contact:
+    note: >
+      Ball is plush/fuzzy and lightweight, so contact/friction may differ
+      significantly from a standard rigid plastic sphere.
+
+  optional_measurement:
+    method: "inclined-plane test"
+    equation: "mu_static ~= tan(theta_at_first_slip)"
+
+randomization:
+  ball_position: true
+  bowl_position: true
+
+  possible_future_randomization:
+    - lighting
+    - tabletop texture
+    - camera noise
+    - object friction
+    - slight camera pose perturbation
+    - ball appearance / texture
+
+implementation_priority:
+  - "Create table geometry."
+  - "Import official SO-101 model."
+  - "Mount SO-101 flush to the long table edge at the measured longitudinal position."
+  - "Create 60 mm rigid spherical target with mass 4.81 g."
+  - "Create simplified transparent bowl geometry."
+  - "Add top-down camera at approximate pose initially."
+  - "Attach wrist camera to the appropriate gripper/wrist link."
+  - "Use 640x480 rendering for both cameras."
+  - "Replace approximate camera poses with calibrated extrinsics."
+  - "Tune contact/friction parameters."
+  - "Add domain randomization after the baseline digital twin works."
+
+unknown_or_not_finalized:
+  - "Exact top-down camera X/Y position in the defined base coordinate frame."
+  - "Exact top-down camera rotation."
+  - "Top-down camera calibrated intrinsics."
+  - "Wrist camera calibrated intrinsics."
+  - "Exact T_gripper_to_wrist_camera."
+  - "Table/ball/gripper friction coefficients."
+  - "Exact bowl collision profile beyond the measured dimensions."
+  - "DP-S2015-Elite 52-taxel coordinates, numbering, and hardware axis convention."
+  - "Exact tactile sensor poses and custom metal finger-extension geometry."
+  - "Tactile sensor mass, zero drift, crosstalk, hysteresis, latency, and noise."
+
+agent_instruction:
+  - >
+    Never invent missing measurements.
+  - >
+    Mark unknown values explicitly and use configurable placeholders.
+  - >
+    Keep all scene dimensions and poses parameterized rather than hard-coding them
+    deep inside the implementation.
+  - >
+    Prefer the official SO-101 robot model over reconstructing robot geometry.
+  - >
+    Build a simple physically functional baseline first, then improve visual and
+    contact fidelity.

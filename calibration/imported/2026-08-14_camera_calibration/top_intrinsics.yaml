@@ -1,0 +1,84 @@
+camera_name: top
+camera_index: 2
+image_width: 640
+image_height: 480
+camera_matrix:
+- - 487.24818737904127
+  - 0.0
+  - 314.9433727134724
+- - 0.0
+  - 476.98743508624614
+  - 231.81993158790587
+- - 0.0
+  - 0.0
+  - 1.0
+dist_coeffs:
+- 0.3552208862405689
+- -0.7546482021479256
+- -0.003950229230118204
+- 0.013280339684861472
+- 0.6119289476766916
+rms_reproj_error_px: 0.28806286835888606
+num_images_used: 20
+per_image:
+- file: 000.png
+  num_corners: 32
+  reproj_error_px: 0.261599063873291
+- file: 001.png
+  num_corners: 32
+  reproj_error_px: 0.2868732213973999
+- file: 002.png
+  num_corners: 32
+  reproj_error_px: 0.28538230061531067
+- file: 003.png
+  num_corners: 29
+  reproj_error_px: 0.2535056471824646
+- file: 004.png
+  num_corners: 35
+  reproj_error_px: 0.2756839692592621
+- file: 005.png
+  num_corners: 31
+  reproj_error_px: 0.27989813685417175
+- file: 006.png
+  num_corners: 35
+  reproj_error_px: 0.26625075936317444
+- file: 007.png
+  num_corners: 35
+  reproj_error_px: 0.27513688802719116
+- file: 008.png
+  num_corners: 35
+  reproj_error_px: 0.26668357849121094
+- file: 009.png
+  num_corners: 35
+  reproj_error_px: 0.26611682772636414
+- file: 010.png
+  num_corners: 35
+  reproj_error_px: 0.2683926224708557
+- file: 011.png
+  num_corners: 35
+  reproj_error_px: 0.24886561930179596
+- file: 012.png
+  num_corners: 35
+  reproj_error_px: 0.23383581638336182
+- file: 013.png
+  num_corners: 35
+  reproj_error_px: 0.250820517539978
+- file: 014.png
+  num_corners: 35
+  reproj_error_px: 0.362045556306839
+- file: 015.png
+  num_corners: 35
+  reproj_error_px: 0.23340752720832825
+- file: 016.png
+  num_corners: 35
+  reproj_error_px: 0.22077126801013947
+- file: 017.png
+  num_corners: 35
+  reproj_error_px: 0.21831050515174866
+- file: 018.png
+  num_corners: 32
+  reproj_error_px: 0.4284979999065399
+- file: 019.png
+  num_corners: 33
+  reproj_error_px: 0.4627239406108856
+calibrated_at: '2026-08-14T16:27:33'

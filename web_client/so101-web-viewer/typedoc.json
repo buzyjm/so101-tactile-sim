@@ -1,0 +1,8 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPointStrategy": "expand",
+  "entryPoints": ["src"],
+  "skipErrorChecking": true,
+  "out": "docs",
+  "tsconfig": "./tsconfig.json"
+} 

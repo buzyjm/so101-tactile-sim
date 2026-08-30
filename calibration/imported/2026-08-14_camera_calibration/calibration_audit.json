@@ -1,0 +1,246 @@
+{
+  "bundle_dir": "/home/buzyjm/isaac_work/calibration/imported/2026-08-14_camera_calibration",
+  "intrinsics": {
+    "top": {
+      "accepted": true,
+      "resolution": [
+        640,
+        480
+      ],
+      "focal_length_px": [
+        487.24818737904127,
+        476.98743508624614
+      ],
+      "principal_point_px": [
+        314.9433727134724,
+        231.81993158790587
+      ],
+      "horizontal_fov_deg": 66.58977457125532,
+      "vertical_fov_deg": 53.41923220620691,
+      "distortion_coefficients": [
+        0.3552208862405689,
+        -0.7546482021479256,
+        -0.003950229230118204,
+        0.013280339684861472,
+        0.6119289476766916
+      ],
+      "rms_reprojection_error_px": 0.28806286835888606,
+      "max_per_view_reprojection_error_px": 0.4627239406108856,
+      "views_used": 20,
+      "checks": {
+        "matrix_shape_valid": true,
+        "finite": true,
+        "positive_focal_lengths": true,
+        "principal_point_inside_image": true,
+        "at_least_15_views": true,
+        "rms_below_1px": true
+      },
+      "constraint": "Use only at the calibrated 640x480 resolution."
+    },
+    "wrist": {
+      "accepted": true,
+      "resolution": [
+        640,
+        480
+      ],
+      "focal_length_px": [
+        1217.1313212856603,
+        1231.0657652712541
+      ],
+      "principal_point_px": [
+        322.2215529820467,
+        233.21613366516235
+      ],
+      "horizontal_fov_deg": 29.46090984448707,
+      "vertical_fov_deg": 22.063232666537974,
+      "distortion_coefficients": [
+        -2.2510010479816494,
+        39.79346451219364,
+        0.07843679025957535,
+        0.02016380418089296,
+        -289.8117695392078
+      ],
+      "rms_reprojection_error_px": 0.3926006791835051,
+      "max_per_view_reprojection_error_px": 0.7381392121315002,
+      "views_used": 20,
+      "checks": {
+        "matrix_shape_valid": true,
+        "finite": true,
+        "positive_focal_lengths": true,
+        "principal_point_inside_image": true,
+        "at_least_15_views": true,
+        "rms_below_1px": true
+      },
+      "constraint": "Use only at the calibrated 640x480 resolution."
+    }
+  },
+  "extrinsics": {
+    "top": {
+      "accepted_for_metric_replay": false,
+      "status": "provisional_rejected",
+      "parent_frame": "base_link",
+      "child_frame": "top_camera",
+      "transform_semantics": "Transform maps points from top_camera frame into base_link frame (p_base_link = T * p_top_camera).",
+      "selected_method": "Tsai",
+      "sample_count": 18,
+      "translation_xyz_m": [
+        -0.20470202523950048,
+        0.19617402888493748,
+        0.4299209297219116
+      ],
+      "translation_norm_m": 0.5149943442010352,
+      "cross_method_translation_spread_mm": 326.52099777536336,
+      "rotation_determinant": 1.0,
+      "rotation_orthogonality_frobenius_error": 2.1499914436943473e-16,
+      "bottom_row_error": 0.0,
+      "checks": {
+        "rigid_transform_valid": true,
+        "cross_method_spread_at_most_50mm": false,
+        "wrist_mount_translation_at_most_0p20m": true
+      },
+      "rejection_reasons": [
+        "cross-method translation spread is 326.5 mm (>50 mm gate)"
+      ],
+      "source_transform_4x4": [
+        [
+          -0.02591722558516585,
+          0.1366402090712297,
+          0.9902816521994832,
+          -0.20470202523950048
+        ],
+        [
+          0.8737596348918112,
+          0.4843667074707074,
+          -0.04396581771916648,
+          0.19617402888493748
+        ],
+        [
+          -0.48566696186965047,
+          0.8641286628500161,
+          -0.13194414041308078,
+          0.4299209297219116
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "per_method_translation_xyz_m": {
+        "Tsai": [
+          -0.20470202523950048,
+          0.19617402888493748,
+          0.4299209297219116
+        ],
+        "Park": [
+          0.22910027257737578,
+          0.021383104340474218,
+          0.6055779783816599
+        ],
+        "Horaud": [
+          0.2291419272039887,
+          0.021231433172541975,
+          0.6055683519970744
+        ],
+        "Andreff": [
+          0.02343994253852322,
+          0.035060639010310334,
+          0.1723321976446408
+        ],
+        "Daniilidis": [
+          0.11844013688808344,
+          -0.054399012332853866,
+          0.605045819554918
+        ]
+      }
+    },
+    "wrist": {
+      "accepted_for_metric_replay": false,
+      "status": "provisional_rejected",
+      "parent_frame": "wrist_link",
+      "child_frame": "wrist_camera",
+      "transform_semantics": "Transform maps points from wrist_camera frame into wrist_link frame (p_wrist_link = T * p_wrist_camera).",
+      "selected_method": "Tsai",
+      "sample_count": 18,
+      "translation_xyz_m": [
+        -0.36267308632188283,
+        -0.016668303151733486,
+        -0.05182943204482219
+      ],
+      "translation_norm_m": 0.3667368128485151,
+      "cross_method_translation_spread_mm": 408.8624301128475,
+      "rotation_determinant": 1.0000000000000004,
+      "rotation_orthogonality_frobenius_error": 3.703653572086156e-16,
+      "bottom_row_error": 0.0,
+      "checks": {
+        "rigid_transform_valid": true,
+        "cross_method_spread_at_most_50mm": false,
+        "wrist_mount_translation_at_most_0p20m": false
+      },
+      "rejection_reasons": [
+        "cross-method translation spread is 408.9 mm (>50 mm gate)",
+        "wrist-link to camera translation norm exceeds 0.20 m"
+      ],
+      "source_transform_4x4": [
+        [
+          0.11886044128616535,
+          0.9047934557314268,
+          0.4089266412974836,
+          -0.36267308632188283
+        ],
+        [
+          0.19101244834937756,
+          0.38331681087819525,
+          -0.9036495266826329,
+          -0.016668303151733486
+        ],
+        [
+          -0.9743646340425306,
+          0.18551826045905212,
+          -0.1272656079363661,
+          -0.05182943204482219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "per_method_translation_xyz_m": {
+        "Tsai": [
+          -0.36267308632188283,
+          -0.016668303151733486,
+          -0.05182943204482219
+        ],
+        "Park": [
+          -0.3364061560553236,
+          0.08299670617466388,
+          -0.02693326084879155
+        ],
+        "Horaud": [
+          -0.3365644419010398,
+          0.0828758389293299,
+          -0.026951987016881698
+        ],
+        "Andreff": [
+          0.0915586560311627,
+          -0.05386690711993066,
+          0.037498950250422575
+        ],
+        "Daniilidis": [
+          -0.2906813998093554,
+          0.4698687996265497,
+          0.22639274463496215
+        ]
+      }
+    }
+  },
+  "normalized_intrinsics": {
+    "top": "/home/buzyjm/isaac_work/calibration/imported/2026-08-14_camera_calibration/normalized/top_intrinsics.yaml",
+    "wrist": "/home/buzyjm/isaac_work/calibration/imported/2026-08-14_camera_calibration/normalized/wrist_intrinsics.yaml"
+  },
+  "metric_replay_ready": false,
+  "decision": "intrinsics accepted; extrinsics must be recalibrated or verified"
+}

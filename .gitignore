@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editors and tooling
+.idea/
+.vscode/
+.claude/
+*.orig
+*.bak
+*.bak_*
+*.pre_*.bak
+
+# Logs and traces
+*.log
+NvStreamer-*.etli
+
+# Generated scenes.  build_scene.py rebuilds every one of these from
+# scene_config.py + assets/; see the README for the two invocations.
+lab_scene.usda
+lab_scene_task.usda
+lab_scene_tactile*.usda
+
+# Render and experiment output.  The directories themselves are tracked via
+# .gitkeep: seven scripts write into them without mkdir, so a fresh clone
+# would otherwise hit FileNotFoundError.
+renders/*
+!renders/.gitkeep
+tactile_logs/*
+!tactile_logs/.gitkeep
+
+# Node dependencies of the WebRTC viewer (npm install restores them)
+web_client/**/node_modules/
+web_client/**/dist/
+
+# NVIDIA reference checkout is maintained as its own repository
+official_so101_workshop/

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>so101-web-viewer</title>
+  </head>
+  <body>
+    <div id="app" style="display: flex;">
+      <div id="stream-container">
+        <div id="main-div" style="display: none;">
+          <div id="aspect-ratio-div" tabindex="0">
+            <video id="remote-video"></video>
+            <audio id="remote-audio" muted></audio>
+          </div>
+        </div>
+        <div id="loading-stream-message" style="display: flex;">
+          <p>WAITING FOR STREAM...</p>
+        </div>
+        <div id="error-message" style="display: none;">
+          <h2>ERROR</h2>
+          <p id="error-message-text">FAILED TO CONNECT TO STREAM</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

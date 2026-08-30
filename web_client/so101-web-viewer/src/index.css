@@ -1,0 +1,271 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ * SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+/* Root styles and resets */
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #333;
+    overflow: hidden;
+}
+
+/* App container */
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+#stream-container {
+    height: 100vh;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+#controls-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 400px;
+    min-width: 400px;
+    height: 100vh;
+    background-color: white;
+    border-left: 1px solid #e0e0e0;
+    padding: 20px;
+}
+
+/* Variant controls */
+.variant-control-item {
+    margin-bottom: 15px;
+}
+
+.variant-control-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.variant-control-select {
+    width: 100%;
+    padding: 8px;
+}
+
+#react-stream-root {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+#loading-stream-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#error-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Video element */
+#remote-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    overflow: hidden;
+    background-color: #000;
+    align-self: anchor-center;
+}
+
+#remote-audio {
+    display: none;
+}
+
+/* Button styles */
+button {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #f5f5f5;
+    border-color: #999;
+}
+
+button:active {
+    background-color: #e5e5e5;
+}
+
+button:focus {
+    outline: 2px solid #646cff;
+    outline-offset: 2px;
+}
+
+/* Stop stream button */
+#stop-stream-btn {
+    margin-bottom: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Select/dropdown styles */
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+select:hover {
+    border-color: #999;
+}
+
+select:focus {
+    outline: 2px solid #646cff;
+    outline-offset: 2px;
+    border-color: #646cff;
+}
+
+/* Label styles */
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Loading/Error message styles */
+p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    margin: 0;
+}
+
+/* OVAppStreamer canvas extent */
+.canvas-extent {
+    outline: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* OVAppStreamer main container */
+#main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+}
+
+/* OVAppStreamer GFN view */
+#view {
+    background-color: #dddddd;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    outline: none;
+}
+
+/* StreamVideoElement wrapper */
+#my-super-id {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}

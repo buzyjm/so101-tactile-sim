@@ -1,0 +1,17 @@
+schema_version: 1
+board_type: charuco
+dictionary: DICT_4X4_50
+squares_x: 8
+squares_y: 6
+square_length_m: 0.025
+marker_length_m: 0.018
+legacy_pattern: false
+print:
+  page: A4_landscape
+  dpi: 300
+  margin_m: 0.01
+  instructions:
+  - Print at actual size / 100 percent.
+  - Disable fit-to-page and any automatic scaling.
+  - Mount flat on a matte rigid backing.
+  - Measure several consecutive squares after printing and record the actual length.

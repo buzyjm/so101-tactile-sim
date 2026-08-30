@@ -1,0 +1,16 @@
+api_version: 1.0
+
+cspace:
+  - shoulder_pan
+  - shoulder_lift
+  - elbow_flex
+  - wrist_flex
+  - wrist_roll
+
+root_link: base_link
+
+default_q: [0.0, 0.0, 0.0, 0.0, 0.0]
+
+cspace_to_urdf_rules: []
+
+composite_task_spaces: []

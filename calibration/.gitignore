@@ -1,0 +1,6 @@
+raw/
+results/
+reports/
+board/*.png
+board/*.pdf
+!board/charuco_spec.yaml

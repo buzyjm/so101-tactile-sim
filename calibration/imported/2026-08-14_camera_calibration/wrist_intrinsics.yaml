@@ -1,0 +1,84 @@
+camera_name: wrist
+camera_index: 1
+image_width: 640
+image_height: 480
+camera_matrix:
+- - 1217.1313212856603
+  - 0.0
+  - 322.2215529820467
+- - 0.0
+  - 1231.0657652712541
+  - 233.21613366516235
+- - 0.0
+  - 0.0
+  - 1.0
+dist_coeffs:
+- -2.2510010479816494
+- 39.79346451219364
+- 0.07843679025957535
+- 0.02016380418089296
+- -289.8117695392078
+rms_reproj_error_px: 0.3926006791835051
+num_images_used: 20
+per_image:
+- file: 000.png
+  num_corners: 35
+  reproj_error_px: 0.24068762362003326
+- file: 001.png
+  num_corners: 35
+  reproj_error_px: 0.1956428736448288
+- file: 002.png
+  num_corners: 35
+  reproj_error_px: 0.2134450227022171
+- file: 003.png
+  num_corners: 31
+  reproj_error_px: 0.18897157907485962
+- file: 004.png
+  num_corners: 35
+  reproj_error_px: 0.2513352632522583
+- file: 005.png
+  num_corners: 33
+  reproj_error_px: 0.3146732449531555
+- file: 006.png
+  num_corners: 35
+  reproj_error_px: 0.2855842709541321
+- file: 007.png
+  num_corners: 35
+  reproj_error_px: 0.26203805208206177
+- file: 008.png
+  num_corners: 33
+  reproj_error_px: 0.24654057621955872
+- file: 009.png
+  num_corners: 35
+  reproj_error_px: 0.7220035195350647
+- file: 010.png
+  num_corners: 35
+  reproj_error_px: 0.1644870489835739
+- file: 011.png
+  num_corners: 31
+  reproj_error_px: 0.16819125413894653
+- file: 012.png
+  num_corners: 31
+  reproj_error_px: 0.24573886394500732
+- file: 013.png
+  num_corners: 31
+  reproj_error_px: 0.3110544979572296
+- file: 014.png
+  num_corners: 33
+  reproj_error_px: 0.21876749396324158
+- file: 015.png
+  num_corners: 35
+  reproj_error_px: 0.6260695457458496
+- file: 016.png
+  num_corners: 35
+  reproj_error_px: 0.5425668954849243
+- file: 017.png
+  num_corners: 35
+  reproj_error_px: 0.7381392121315002
+- file: 018.png
+  num_corners: 35
+  reproj_error_px: 0.5970852375030518
+- file: 019.png
+  num_corners: 35
+  reproj_error_px: 0.32086309790611267
+calibrated_at: '2026-08-14T16:26:31'
