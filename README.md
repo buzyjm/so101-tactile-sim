@@ -14,10 +14,15 @@ and deploy them zero-shot to the real arm**.
   alongside the resultant `(2, 3)` and magnitudes `(2, 52)`.
 - Isaac Lab interface: the policy observation is a normalised `(N, 312)`; the
   debug observation keeps the raw dimensions.
-- **The scripted pick-and-place task runs end to end and reproduces**: lift
-  +98.7 mm, ball landing 18.3 mm from the bowl centre (threshold 28.5 mm), peak
-  4.9 N with 0.0% clipped, both pads in contact 87.3% of the time, 2.32 mm
-  settling drift.
+- **The scripted pick-and-place task runs end to end** on the nominal,
+  hand-tuned configuration: lift +99 mm, ball landing 18.3 mm from the bowl
+  centre (threshold 28.5 mm), peak 4.9 N with 0.0% clipped.
+- It is **not yet robust**.  Across ten randomised episodes
+  (`tactile_logs/randomized/`) it succeeds 7/10, and both pads stay in contact
+  for anywhere between 0.0% and 88.5% of the carry, median 31.1%.  The three
+  failures throw the ball 277-912 mm from the bowl.  Peak force barely moves
+  (4.74-4.90 N) because it is set by the fixed closing angle, not by the
+  randomised friction, mass or torque.
 - Parallel scene: `BallPickPlaceSceneCfg` clones the table, ball, bowl and
   tactile sensors across environments; the ball settles with 0.0 mm error.
 - Real-data alignment: the sample rate is corrected to 90.9 Hz from the raw
@@ -185,14 +190,17 @@ would be coplanar with every tabletop in the grid and z-fight.
 
 ## Next steps
 
-1. Contact model: a soft-body ball or an SDF field with lateral coupling, to
+1. Grasp robustness.  7/10 under randomisation is not a base for RL: the ball
+   is held across roughly two degrees of gripper closure, so anything that
+   shifts the contact point drops a pad.  This gates everything below it.
+2. Contact model: a soft-body ball or an SDF field with lateral coupling, to
    raise the number of active taxels.
-2. Task rewards and terminations for the parallel environments.  Right now there
-   are only the tactile terms `bilateral_contact` / `force_balance` / `overload`
-   -- nothing expresses "put the ball in the bowl".
-3. Feed the measured hardware calibration back into sim: tighten the
+3. Task rewards and terminations for the parallel environments.  Right now
+   there are only the tactile terms `bilateral_contact` / `force_balance` /
+   `overload` -- nothing expresses "put the ball in the bowl".
+4. Feed the measured hardware calibration back into sim: tighten the
    `wrist_flex` limit, model command latency.
-4. Randomise the ball and bowl poses.
-5. Split the recording camera out of the training scene.  The `CameraCfg`
+5. Randomise the ball and bowl poses.
+6. Split the recording camera out of the training scene.  The `CameraCfg`
    currently lives on `BallPickPlaceSceneCfg`, which forces every consumer to
    pass `--enable_cameras`.
