@@ -22,6 +22,15 @@
  */
 
 import './index.css';
+
+// crypto.randomUUID only exists in secure contexts.  The viewer is served
+// over plain http when opened by LAN address, so give the streaming library
+// a fallback there.
+if (typeof crypto !== 'undefined' && typeof crypto.randomUUID !== 'function') {
+    (crypto as any).randomUUID = () =>
+        '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) =>
+            (Number(c) ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (Number(c) / 4)))).toString(16));
+}
 import { AppStreamer, DirectConfig, StreamEvent, StreamProps, LogLevel, StreamType, EventAction, EventStatus } from '@nvidia/ov-web-rtc';
 
 interface AppState {
@@ -72,15 +81,42 @@ class StreamingApp {
         }
         this.streamRequested = true;
         const query = new URLSearchParams(window.location.search);
-        const signalingServer = query.get('server') || window.location.hostname;
+        const host = window.location.hostname;
+        // Use the same host that served this page. This works both for
+        // localhost and for a trusted LAN client opening the server IP.
+        // The query override handles IDE/browser proxies whose hostname is
+        // not the machine running Isaac Sim.
+        const signalingServer = query.get('server') || host;
+        const signalingPort = Number(query.get('signal') || 49100);
+        // The media channel is UDP.  Through an SSH tunnel or a VS Code port
+        // forward only TCP arrives, so the browser relays the media through
+        // the TURN server that start_browser_viewer.sh runs next to Isaac Sim
+        // (TURN over TCP to the host, UDP from the relay to Kit).
+        //   ?ice=relay   media must go through TURN (default on localhost)
+        //   ?ice=all     try direct UDP first, fall back to TURN (default on LAN)
+        //   ?ice=none    no TURN, direct UDP only
+        //   ?turn=host:port, ?turnuser=, ?turnpass=  relay location/credentials
+        const loopback = ['localhost', '127.0.0.1', '[::1]'].includes(host);
+        const iceMode = query.get('ice') || (loopback ? 'relay' : 'all');
+        const turnHost = query.get('turn') || `${host}:3478`;
+        const iceServerConfiguration = iceMode === 'none' ? undefined : {
+            iceServers: [{
+                urls: `turn:${turnHost}?transport=tcp`,
+                username: query.get('turnuser') || 'so101',
+                credential: query.get('turnpass') || 'so101',
+            }],
+            iceTransportPolicy: iceMode === 'relay' ? 'relay' as RTCIceTransportPolicy : 'all' as RTCIceTransportPolicy,
+        };
+        const summary = `signalling ${signalingServer}:${signalingPort}, ice ${iceMode}` +
+            (iceServerConfiguration ? ` via turn ${turnHost}` : '');
+        console.info(`Stream config: ${summary}`);
+        const configText = document.getElementById('stream-config-text');
+        if (configText) configText.textContent = summary;
         const streamConfig: DirectConfig = {
             videoElementId: 'remote-video',
-            // Use the same host that served this page. This works both for
-            // localhost and for a trusted LAN client opening the server IP.
-            // The query override handles IDE/browser proxies whose hostname is
-            // not the machine running Isaac Sim.
             signalingServer,
-            signalingPort: 49100,
+            signalingPort,
+            iceServerConfiguration,
             width: 1920,
             height: 1080,
             fps: 60,
