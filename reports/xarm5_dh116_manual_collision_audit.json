@@ -1,0 +1,1090 @@
+{
+  "schema_version": 1,
+  "asset_path": "/home/buzyjm/isaac_work/assets/xarm5_dh116/usd_manual_2026_04_self_collision/xarm5_dh116/xarm5_dh116.usda",
+  "asset_sha256": "38b4f2919794ddbde33a0b6fcbd325e76c59a91ba4338fd1f430ac3fae527e5a",
+  "robot": "arm",
+  "self_collisions": "on",
+  "dt": 0.008333333333333333,
+  "position_iterations": 64,
+  "velocity_iterations": 8,
+  "contact_last": true,
+  "max_depenetration_velocity": 1.0,
+  "collider_config": [
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link/hand_finger14_link/finger14_link",
+      "body": "hand_finger14_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link/finger13_link/finger13_link",
+      "body": "hand_finger13_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link/finger12_link/finger12_link",
+      "body": "hand_finger12_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/finger11_link/finger11_link",
+      "body": "hand_finger11_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link/hand_finger22_link/hand_finger23_link/finger23_link",
+      "body": "hand_finger23_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link/hand_finger22_link/finger22_link/finger22_link",
+      "body": "hand_finger22_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link/finger21_link/finger21_link",
+      "body": "hand_finger21_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link/hand_finger32_link/hand_finger33_link/finger33_link",
+      "body": "hand_finger33_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link/hand_finger32_link/finger32_link/finger32_link",
+      "body": "hand_finger32_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link/finger31_link/finger31_link",
+      "body": "hand_finger31_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link/hand_finger42_link/hand_finger43_link/finger43_link",
+      "body": "hand_finger43_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link/hand_finger42_link/finger42_link/finger42_link",
+      "body": "hand_finger42_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link/finger41_link/finger41_link",
+      "body": "hand_finger41_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link/hand_finger52_link/hand_finger53_link/finger53_link",
+      "body": "hand_finger53_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link/hand_finger52_link/finger52_link/finger52_link",
+      "body": "hand_finger52_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link/finger51_link/finger51_link",
+      "body": "hand_finger51_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/base_link/base_link",
+      "body": "hand_base_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/flange_adapter/flange_adapter",
+      "body": "flange_adapter",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link5/link5/link5",
+      "body": "link5",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link4/link4/link4",
+      "body": "link4",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link3/link3/link3",
+      "body": "link3",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link2/link2/link2",
+      "body": "link2",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link1/link1/link1",
+      "body": "link1",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/link_base/link_base/link_base",
+      "body": "link_base",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    }
+  ],
+  "joint_names": [
+    "hand_finger11",
+    "hand_finger12",
+    "hand_finger13",
+    "hand_finger21",
+    "hand_finger22",
+    "hand_finger31",
+    "hand_finger32",
+    "hand_finger41",
+    "hand_finger42",
+    "hand_finger51",
+    "hand_finger52"
+  ],
+  "body_names": [
+    "link_base",
+    "link1",
+    "link2",
+    "link3",
+    "link4",
+    "link5",
+    "flange_adapter",
+    "hand_base_link",
+    "hand_finger11_link",
+    "hand_finger21_link",
+    "hand_finger31_link",
+    "hand_finger41_link",
+    "hand_finger51_link",
+    "hand_finger12_link",
+    "hand_finger22_link",
+    "hand_finger32_link",
+    "hand_finger42_link",
+    "hand_finger52_link",
+    "hand_finger13_link",
+    "hand_finger23_link",
+    "hand_finger33_link",
+    "hand_finger43_link",
+    "hand_finger53_link",
+    "hand_finger14_link"
+  ],
+  "phases": [
+    {
+      "phase": "0_open",
+      "max_joint_limit_violation_deg": 2.7569483791012317e-05,
+      "max_joint_speed_rad_s": 0.601438045501709,
+      "settled_max_joint_speed_rad_s": 0.601438045501709,
+      "max_tracking_error_deg": 0.14870423078536987,
+      "settled_joint_std_deg": 0.0022663073614239693,
+      "final_joint_deg": [
+        -5.238624680714565e-07,
+        -8.731109119253233e-06,
+        0.2630999982357025,
+        0.08873755484819412,
+        0.6510443091392517,
+        0.14870423078536987,
+        0.6541339159011841,
+        0.1330217570066452,
+        0.654076874256134,
+        0.037353515625,
+        0.6412938237190247
+      ]
+    },
+    {
+      "phase": "1_rock",
+      "max_joint_limit_violation_deg": 0.10264407843351364,
+      "max_joint_speed_rad_s": 3.001070976257324,
+      "settled_max_joint_speed_rad_s": 3.0000052452087402,
+      "max_tracking_error_deg": 21.09980010986328,
+      "settled_joint_std_deg": 0.11139187961816788,
+      "final_joint_deg": [
+        26.900197982788086,
+        25.21921730041504,
+        34.136199951171875,
+        74.80397033691406,
+        89.64118194580078,
+        72.55091094970703,
+        87.65767669677734,
+        72.34757232666016,
+        87.24527740478516,
+        79.88121795654297,
+        96.42098999023438
+      ]
+    },
+    {
+      "phase": "2_open",
+      "max_joint_limit_violation_deg": 0.06895758956670761,
+      "max_joint_speed_rad_s": 3.000005006790161,
+      "settled_max_joint_speed_rad_s": 0.6257486939430237,
+      "max_tracking_error_deg": 0.17931124567985535,
+      "settled_joint_std_deg": 8.157450793078169e-05,
+      "final_joint_deg": [
+        -8.698203600943089e-06,
+        -0.00016693946963641793,
+        0.2630999982357025,
+        0.10568573325872421,
+        0.6534122824668884,
+        0.17931124567985535,
+        0.6572072505950928,
+        0.1499607264995575,
+        0.6561453342437744,
+        0.05311594530940056,
+        0.6423429250717163
+      ]
+    },
+    {
+      "phase": "3_scissors",
+      "max_joint_limit_violation_deg": 0.0981566458940506,
+      "max_joint_speed_rad_s": 3.0000052452087402,
+      "settled_max_joint_speed_rad_s": 3.000005006790161,
+      "max_tracking_error_deg": 21.113637924194336,
+      "settled_joint_std_deg": 0.10868877172470093,
+      "final_joint_deg": [
+        26.88636016845703,
+        25.814456939697266,
+        34.12914276123047,
+        0.17295008897781372,
+        0.6337499618530273,
+        0.2951273024082184,
+        0.6332378387451172,
+        72.34999084472656,
+        87.24258422851562,
+        79.88164520263672,
+        96.42051696777344
+      ]
+    },
+    {
+      "phase": "4_one",
+      "max_joint_limit_violation_deg": 0.1260886937379837,
+      "max_joint_speed_rad_s": 3.002171277999878,
+      "settled_max_joint_speed_rad_s": 3.000009536743164,
+      "max_tracking_error_deg": 47.62715148925781,
+      "settled_joint_std_deg": 0.014307658188045025,
+      "final_joint_deg": [
+        26.876049041748047,
+        26.03350067138672,
+        34.19248962402344,
+        0.6414434909820557,
+        0.6292033791542053,
+        40.9578742980957,
+        49.074554443359375,
+        72.3499984741211,
+        87.2414779663086,
+        79.93325805664062,
+        96.34066772460938
+      ]
+    },
+    {
+      "phase": "5_thumbs_up",
+      "max_joint_limit_violation_deg": 0.1826051026582718,
+      "max_joint_speed_rad_s": 3.422912120819092,
+      "settled_max_joint_speed_rad_s": 0.6097730994224548,
+      "max_tracking_error_deg": 10.7610445022583,
+      "settled_joint_std_deg": 6.76613999530673e-05,
+      "final_joint_deg": [
+        0.1553814560174942,
+        -0.002880991203710437,
+        0.6602616906166077,
+        74.8241195678711,
+        89.62498474121094,
+        74.16511535644531,
+        85.92156982421875,
+        72.35008239746094,
+        87.24197387695312,
+        79.92572021484375,
+        96.35317993164062
+      ]
+    },
+    {
+      "phase": "6_open",
+      "max_joint_limit_violation_deg": 0.002881041495129466,
+      "max_joint_speed_rad_s": 2.9532361030578613,
+      "settled_max_joint_speed_rad_s": 0.6254024505615234,
+      "max_tracking_error_deg": 0.17981670796871185,
+      "settled_joint_std_deg": 5.988252269162331e-06,
+      "final_joint_deg": [
+        -9.347380910185166e-06,
+        -0.0001794571289792657,
+        0.2630999684333801,
+        0.10600125789642334,
+        0.6534537076950073,
+        0.17981670796871185,
+        0.6572571992874146,
+        0.15027830004692078,
+        0.6561818718910217,
+        0.05341517925262451,
+        0.6423622965812683
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "phase": "0_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 5760,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 4320,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2262,
+      "min_separation_m": -1.1759569133573677e-05,
+      "settled_min_separation_m": -7.507172995246947e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 3104,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 10368,
+      "min_separation_m": -1.937027263920754e-06,
+      "settled_min_separation_m": -9.667348876973847e-07
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 4190,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 6816,
+      "min_separation_m": -1.816479311855801e-06,
+      "settled_min_separation_m": -1.4150833749226877e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2100,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 7352,
+      "min_separation_m": -7.7858567237854e-07,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 2414,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 15534,
+      "min_separation_m": -4.1470503475693477e-08,
+      "settled_min_separation_m": -3.768180079077865e-08
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 1376,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 100,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 162,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 98,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 142,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger14_link / hand_finger33_link",
+      "samples": 86,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 1042,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2312,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2320,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 804,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 1006,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 480,
+      "min_separation_m": -7.265347448992543e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 370,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 1240,
+      "min_separation_m": -9.62578269536607e-07,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 524,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 888,
+      "min_separation_m": -1.3725260714636534e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 268,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 960,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 172,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 1138,
+      "min_separation_m": -2.6605402325685645e-08,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 634,
+      "min_separation_m": -5.226838402450085e-05,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 204,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 62,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 8,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 5096,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2768,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2764,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 4412,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 3698,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2162,
+      "min_separation_m": -1.177893045678502e-05,
+      "settled_min_separation_m": -7.00598820913001e-06
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2100,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 7352,
+      "min_separation_m": -7.152557373046875e-07,
+      "settled_min_separation_m": -3.6875110964729174e-08
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 2400,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 15534,
+      "min_separation_m": -1.0118530013869531e-07,
+      "settled_min_separation_m": -1.0118530013869531e-07
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 806,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 996,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2160,
+      "min_separation_m": -6.706080966978334e-06,
+      "settled_min_separation_m": -5.606908871413907e-06
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 10080,
+      "min_separation_m": -5.505155797891348e-08,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 3600,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 23040,
+      "min_separation_m": -9.046053861538894e-08,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 2346,
+      "min_separation_m": -0.00021690502762794495,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 7618,
+      "min_separation_m": -0.000322733074426651,
+      "settled_min_separation_m": -6.770426807634067e-06
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 4696,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger14_link / hand_finger33_link",
+      "samples": 10542,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2846,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2872,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 480,
+      "min_separation_m": -5.57585917704273e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 4136,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 10360,
+      "min_separation_m": -1.3437172583508072e-06,
+      "settled_min_separation_m": -9.64419655247184e-07
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 4616,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 7070,
+      "min_separation_m": -3.489106893539429e-05,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 10080,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 3600,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 23040,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger11_link / hand_finger32_link",
+      "samples": 124,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger11_link / hand_finger33_link",
+      "samples": 104,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 154,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 98,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 490,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 1308,
+      "min_separation_m": -1.3576018318417482e-05,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 956,
+      "min_separation_m": -0.0004063862725161016,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger14_link / hand_finger33_link",
+      "samples": 2018,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 1040,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 1710,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2266,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 484,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 1240,
+      "min_separation_m": -9.156943292509823e-07,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 526,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 836,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 268,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 960,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 172,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 1138,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 5100,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2696,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2766,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 4416,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 3708,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    }
+  ],
+  "acceptance": {
+    "sampled_max_penetration_mm": 0.4063862725161016,
+    "max_joint_limit_violation_deg": 0.1826051026582718,
+    "max_settled_joint_std_deg": 0.11139187961816788,
+    "scope": "7 deterministic gesture phases, sampled at each physics step; no real-hand calibration",
+    "passed": true
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "source": "assets/dh116_hand/usd/dh116_hand",
+  "asset": "assets/dh116_hand/usd_self_collision/dh116_hand/dh116_hand.usda",
+  "colliders": [
+    "/Instances/base_link/base_link",
+    "/Instances/finger11_link/finger11_link",
+    "/Instances/finger12_link/finger12_link",
+    "/Instances/finger13_link/finger13_link",
+    "/Instances/finger14_link/finger14_link",
+    "/Instances/finger21_link/finger21_link",
+    "/Instances/finger22_link/finger22_link",
+    "/Instances/finger23_link/finger23_link",
+    "/Instances/finger31_link/finger31_link",
+    "/Instances/finger32_link/finger32_link",
+    "/Instances/finger33_link/finger33_link",
+    "/Instances/finger41_link/finger41_link",
+    "/Instances/finger42_link/finger42_link",
+    "/Instances/finger43_link/finger43_link",
+    "/Instances/finger51_link/finger51_link",
+    "/Instances/finger52_link/finger52_link",
+    "/Instances/finger53_link/finger53_link"
+  ],
+  "roots": [
+    "/dh116_hand/Geometry"
+  ],
+  "filtered_pairs": [],
+  "parameters": {
+    "contact_offset_m": 0.001,
+    "rest_offset_m": 0.0,
+    "position_iterations": 32,
+    "velocity_iterations": 8,
+    "max_depenetration_velocity_m_s": 1.0
+  },
+  "source_sha256": {
+    "dh116_hand.usda": "fe111dfbd713dfa0d6460fdb25cd7c3633e62784ee01e3ab3eb565c8b922d04f",
+    "payloads/Physics/mujoco.usda": "57cf009fdadca39397b4071051318b45ba40ed1dbf62437580ca4b264b02ab10",
+    "payloads/Physics/physics.usda": "f50cc8685c9db78efdcfe8615e9b9556d70a61f5d92a2adc38009a6caa172df4",
+    "payloads/Physics/physx.usda": "c469213090bb6438c53863146a9569e9db869c4804cacabff89859943d15af4d",
+    "payloads/base.usda": "a09c5fdc2c20d044cf366cc61f897cdde1ba686a27ebaa9e32b8b84f18d112d2",
+    "payloads/geometries.usd": "3c6ec36160e56a270b666efbf3d95c6ea0fddd1a564aafa566d68bb4d3aa6894",
+    "payloads/instances.usda": "17ea79cc820bbc7c6d7c6496b3a3b3a0aac71773eb0a29ff4ce6adc014482f1a",
+    "payloads/materials.usda": "24d57ab64fa61540a37ff40b1ded9970125812aa195ce117e5ec21c78ff2daac",
+    "payloads/robot.usda": "c8751ffe8b7b93120168ea759bade9f9b53e0ef87ba1a5e09ee710ecf7c08723"
+  }
+}

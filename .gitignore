@@ -36,3 +36,9 @@ web_client/**/dist/
 
 # NVIDIA reference checkout is maintained as its own repository
 official_so101_workshop/
+
+# xArm5 + DH116 showcase stage, rebuilt by scripts/xarm5_dh116/build_scene.py
+xarm5_dh116_*.usda
+
+# RL training runs (checkpoints, tensorboard)
+logs/

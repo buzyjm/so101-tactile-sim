@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    defaultPrim = "dh116_hand"
+    doc = """Generated from Composed Stage of root layer /tmp/tmp695jh74e/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_v0iblki3/usdex_dh116_hand/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_v0iblki3/temp_dh116_hand/dh116_hand.usd
+
+
+Generated from Composed Stage of root layer /home/buzyjm/isaac_work/assets/dh116_hand/usd_manual_2026_04/dh116_hand/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "dh116_hand" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Physics = "physx"
+    }
+    append variantSets = "Physics"
+)
+{
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

@@ -1,0 +1,348 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    defaultPrim = "dh116_hand"
+    doc = """Generated from Composed Stage of root layer /tmp/tmp695jh74e/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_v0iblki3/usdex_dh116_hand/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_v0iblki3/temp_dh116_hand/dh116_hand.usd
+
+
+Generated from Composed Stage of root layer /home/buzyjm/isaac_work/assets/dh116_hand/usd_manual_2026_04/dh116_hand/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "dh116_hand"
+{
+    over "Physics"
+    {
+        def MjcActuator "hand_finger11_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger11>
+        }
+
+        def MjcActuator "hand_finger12_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger12>
+        }
+
+        def MjcActuator "hand_finger13_actuator"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger13>
+        }
+
+        def MjcActuator "hand_finger21_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger21>
+        }
+
+        def MjcActuator "hand_finger22_actuator"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger22>
+        }
+
+        def MjcActuator "hand_finger31_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger31>
+        }
+
+        def MjcActuator "hand_finger32_actuator"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger32>
+        }
+
+        def MjcActuator "hand_finger41_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger41>
+        }
+
+        def MjcActuator "hand_finger42_actuator"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger42>
+        }
+
+        def MjcActuator "hand_finger51_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, -0.01745329238474369, -0.001745329238474369, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            uniform double[] mjc:gainPrm = [0.01745329238474369, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger51>
+        }
+
+        def MjcActuator "hand_finger52_actuator"
+        {
+            uniform double mjc:forceRange:max = 2
+            uniform double mjc:forceRange:min = -2
+            custom rel mjc:target
+            prepend rel mjc:target = </dh116_hand/Physics/hand_finger52>
+        }
+
+        over "root_joint"
+        {
+        }
+
+        over "hand_finger11" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger12" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger13" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger14"
+        {
+        }
+
+        over "hand_finger21" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger22" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger23"
+        {
+        }
+
+        over "hand_finger31" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger32" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger33"
+        {
+        }
+
+        over "hand_finger41" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger42" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger43"
+        {
+        }
+
+        over "hand_finger51" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger52" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "hand_finger53"
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "hand_base_link"
+        {
+            over "hand_finger11_link"
+            {
+                over "hand_finger12_link"
+                {
+                    over "hand_finger13_link"
+                    {
+                        over "hand_finger14_link"
+                        {
+                        }
+
+                        over "finger13_link"
+                        {
+                        }
+                    }
+
+                    over "finger12_link"
+                    {
+                    }
+                }
+
+                over "finger11_link"
+                {
+                }
+            }
+
+            over "hand_finger21_link"
+            {
+                over "hand_finger22_link"
+                {
+                    over "hand_finger23_link"
+                    {
+                    }
+
+                    over "finger22_link"
+                    {
+                    }
+                }
+
+                over "finger21_link"
+                {
+                }
+            }
+
+            over "hand_finger31_link"
+            {
+                over "hand_finger32_link"
+                {
+                    over "hand_finger33_link"
+                    {
+                    }
+
+                    over "finger32_link"
+                    {
+                    }
+                }
+
+                over "finger31_link"
+                {
+                }
+            }
+
+            over "hand_finger41_link"
+            {
+                over "hand_finger42_link"
+                {
+                    over "hand_finger43_link"
+                    {
+                    }
+
+                    over "finger42_link"
+                    {
+                    }
+                }
+
+                over "finger41_link"
+                {
+                }
+            }
+
+            over "hand_finger51_link"
+            {
+                over "hand_finger52_link"
+                {
+                    over "hand_finger53_link"
+                    {
+                    }
+
+                    over "finger52_link"
+                    {
+                    }
+                }
+
+                over "finger51_link"
+                {
+                }
+            }
+
+            over "base_link"
+            {
+            }
+        }
+    }
+
+    over "Materials"
+    {
+    }
+
+    over "VisualMaterials"
+    {
+    }
+}
+

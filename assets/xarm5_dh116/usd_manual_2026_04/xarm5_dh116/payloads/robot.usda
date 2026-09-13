@@ -1,0 +1,296 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    defaultPrim = "xarm5_dh116"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpf__mf5kv/xarm5_dh116.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_xarm5_dh116_1rj5hm0i/usdex_xarm5_dh116/xarm5_dh116.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_xarm5_dh116_1rj5hm0i/temp_xarm5_dh116/xarm5_dh116.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "xarm5_dh116" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    prepend rel isaac:physics:robotJoints = [
+        </xarm5_dh116/Physics/joint_hand_mount>,
+        </xarm5_dh116/Physics/hand_finger11>,
+        </xarm5_dh116/Physics/hand_finger21>,
+        </xarm5_dh116/Physics/hand_finger31>,
+        </xarm5_dh116/Physics/hand_finger41>,
+        </xarm5_dh116/Physics/hand_finger51>,
+        </xarm5_dh116/Physics/joint_adapter>,
+        </xarm5_dh116/Physics/hand_finger12>,
+        </xarm5_dh116/Physics/hand_finger13>,
+        </xarm5_dh116/Physics/hand_finger14>,
+        </xarm5_dh116/Physics/hand_finger22>,
+        </xarm5_dh116/Physics/hand_finger23>,
+        </xarm5_dh116/Physics/hand_finger32>,
+        </xarm5_dh116/Physics/hand_finger33>,
+        </xarm5_dh116/Physics/hand_finger42>,
+        </xarm5_dh116/Physics/hand_finger43>,
+        </xarm5_dh116/Physics/hand_finger52>,
+        </xarm5_dh116/Physics/hand_finger53>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link/hand_finger14_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link/hand_finger22_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger21_link/hand_finger22_link/hand_finger23_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link/hand_finger32_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger31_link/hand_finger32_link/hand_finger33_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link/hand_finger42_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger41_link/hand_finger42_link/hand_finger43_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link/hand_finger52_link>,
+        </xarm5_dh116/Geometry/link_base/link1/link2/link3/link4/link5/link_eef/flange_adapter/hand_base_link/hand_finger51_link/hand_finger52_link/hand_finger53_link>,
+    ]
+    token isaac:robotType = "Default"
+
+    over "Geometry"
+    {
+        over "link_base"
+        {
+            over "link1"
+            {
+                over "link2"
+                {
+                    over "link3"
+                    {
+                        over "link4"
+                        {
+                            over "link5"
+                            {
+                                over "link_eef"
+                                {
+                                    over "flange_adapter" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "hand_base_link" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "hand_finger11_link" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "hand_finger12_link" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "hand_finger13_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "hand_finger14_link" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            over "hand_finger21_link" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "hand_finger22_link" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "hand_finger23_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+                                            }
+
+                                            over "hand_finger31_link" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "hand_finger32_link" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "hand_finger33_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+                                            }
+
+                                            over "hand_finger41_link" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "hand_finger42_link" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "hand_finger43_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+                                            }
+
+                                            over "hand_finger51_link" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "hand_finger52_link" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "hand_finger53_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "joint_adapter" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "joint_hand_mount" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger11" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger12" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger13" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger14" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger21" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger22" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger23" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger31" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger32" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger33" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger41" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger42" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger43" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger51" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger52" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_finger53" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+}
+

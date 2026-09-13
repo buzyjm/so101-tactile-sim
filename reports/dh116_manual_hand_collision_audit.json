@@ -1,0 +1,1027 @@
+{
+  "schema_version": 1,
+  "asset_path": "/home/buzyjm/isaac_work/assets/dh116_hand/usd_manual_2026_04_self_collision/dh116_hand/dh116_hand.usda",
+  "asset_sha256": "0a6ae5d445e8b28e1f0ba5de095aabf038db79cf398f650046a3d509fd0dc31e",
+  "robot": "hand",
+  "self_collisions": "on",
+  "dt": 0.008333333333333333,
+  "position_iterations": 32,
+  "velocity_iterations": 8,
+  "contact_last": true,
+  "max_depenetration_velocity": 1.0,
+  "collider_config": [
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link/hand_finger14_link/finger14_link",
+      "body": "hand_finger14_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger11_link/hand_finger12_link/hand_finger13_link/finger13_link/finger13_link",
+      "body": "hand_finger13_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger11_link/hand_finger12_link/finger12_link/finger12_link",
+      "body": "hand_finger12_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger11_link/finger11_link/finger11_link",
+      "body": "hand_finger11_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger21_link/hand_finger22_link/hand_finger23_link/finger23_link",
+      "body": "hand_finger23_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger21_link/hand_finger22_link/finger22_link/finger22_link",
+      "body": "hand_finger22_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger21_link/finger21_link/finger21_link",
+      "body": "hand_finger21_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger31_link/hand_finger32_link/hand_finger33_link/finger33_link",
+      "body": "hand_finger33_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger31_link/hand_finger32_link/finger32_link/finger32_link",
+      "body": "hand_finger32_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger31_link/finger31_link/finger31_link",
+      "body": "hand_finger31_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger41_link/hand_finger42_link/hand_finger43_link/finger43_link",
+      "body": "hand_finger43_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger41_link/hand_finger42_link/finger42_link/finger42_link",
+      "body": "hand_finger42_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger41_link/finger41_link/finger41_link",
+      "body": "hand_finger41_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger51_link/hand_finger52_link/hand_finger53_link/finger53_link",
+      "body": "hand_finger53_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger51_link/hand_finger52_link/finger52_link/finger52_link",
+      "body": "hand_finger52_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/hand_finger51_link/finger51_link/finger51_link",
+      "body": "hand_finger51_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    },
+    {
+      "path": "/World/Robot/Geometry/hand_base_link/base_link/base_link",
+      "body": "hand_base_link",
+      "contact_offset": 0.0010000000474974513,
+      "rest_offset": 0.0
+    }
+  ],
+  "joint_names": [
+    "hand_finger11",
+    "hand_finger12",
+    "hand_finger13",
+    "hand_finger21",
+    "hand_finger22",
+    "hand_finger31",
+    "hand_finger32",
+    "hand_finger41",
+    "hand_finger42",
+    "hand_finger51",
+    "hand_finger52"
+  ],
+  "body_names": [
+    "hand_base_link",
+    "hand_finger11_link",
+    "hand_finger21_link",
+    "hand_finger31_link",
+    "hand_finger41_link",
+    "hand_finger51_link",
+    "hand_finger12_link",
+    "hand_finger22_link",
+    "hand_finger32_link",
+    "hand_finger42_link",
+    "hand_finger52_link",
+    "hand_finger13_link",
+    "hand_finger23_link",
+    "hand_finger33_link",
+    "hand_finger43_link",
+    "hand_finger53_link",
+    "hand_finger14_link"
+  ],
+  "phases": [
+    {
+      "phase": "0_open",
+      "max_joint_limit_violation_deg": 5.336084996088175e-08,
+      "max_joint_speed_rad_s": 0.5886930823326111,
+      "settled_max_joint_speed_rad_s": 0.517177164554596,
+      "max_tracking_error_deg": 0.1644906848669052,
+      "settled_joint_std_deg": 4.26886799687054e-07,
+      "final_joint_deg": [
+        3.788445610553026e-07,
+        0.16449066996574402,
+        0.2765134572982788,
+        0.03662974387407303,
+        0.6344000101089478,
+        0.043171290308237076,
+        0.6344000101089478,
+        0.03678039833903313,
+        0.634399950504303,
+        0.03388984128832817,
+        0.6344000101089478
+      ]
+    },
+    {
+      "phase": "1_rock",
+      "max_joint_limit_violation_deg": 0.32774320244789124,
+      "max_joint_speed_rad_s": 3.003688097000122,
+      "settled_max_joint_speed_rad_s": 3.000004529953003,
+      "max_tracking_error_deg": 21.001033782958984,
+      "settled_joint_std_deg": 0.02773207612335682,
+      "final_joint_deg": [
+        26.999008178710938,
+        22.1087703704834,
+        34.340057373046875,
+        75.14888000488281,
+        89.37450408935547,
+        72.54893493652344,
+        87.66683197021484,
+        72.36143493652344,
+        87.23171997070312,
+        79.87291717529297,
+        96.43438720703125
+      ]
+    },
+    {
+      "phase": "2_open",
+      "max_joint_limit_violation_deg": 0.2729548215866089,
+      "max_joint_speed_rad_s": 3.3461849689483643,
+      "settled_max_joint_speed_rad_s": 0.5171778202056885,
+      "max_tracking_error_deg": 0.1644907146692276,
+      "settled_joint_std_deg": 3.7352594972617226e-07,
+      "final_joint_deg": [
+        3.7885442338847497e-07,
+        0.16449061036109924,
+        0.2765122056007385,
+        0.03662968799471855,
+        0.6344000101089478,
+        0.04317130520939827,
+        0.6344000101089478,
+        0.03678049147129059,
+        0.6344000101089478,
+        0.03388982638716698,
+        0.6344000101089478
+      ]
+    },
+    {
+      "phase": "3_scissors",
+      "max_joint_limit_violation_deg": 0.3324355483055115,
+      "max_joint_speed_rad_s": 3.0000030994415283,
+      "settled_max_joint_speed_rad_s": 3.0000030994415283,
+      "max_tracking_error_deg": 21.00067138671875,
+      "settled_joint_std_deg": 0.007979558780789375,
+      "final_joint_deg": [
+        26.999357223510742,
+        22.100536346435547,
+        34.3403434753418,
+        0.036629777401685715,
+        0.6344000101089478,
+        0.043171320110559464,
+        0.6344000101089478,
+        72.36144256591797,
+        87.2317123413086,
+        79.87523651123047,
+        96.43060302734375
+      ]
+    },
+    {
+      "phase": "4_one",
+      "max_joint_limit_violation_deg": 0.5962720513343811,
+      "max_joint_speed_rad_s": 3.0507073402404785,
+      "settled_max_joint_speed_rad_s": 3.0000038146972656,
+      "max_tracking_error_deg": 21.000890731811523,
+      "settled_joint_std_deg": 0.08464553952217102,
+      "final_joint_deg": [
+        26.999107360839844,
+        22.134817123413086,
+        34.338050842285156,
+        0.03662974759936333,
+        0.6344000101089478,
+        74.23250579833984,
+        85.83395385742188,
+        72.3614501953125,
+        87.23170471191406,
+        79.875244140625,
+        96.43060302734375
+      ]
+    },
+    {
+      "phase": "5_thumbs_up",
+      "max_joint_limit_violation_deg": 0.2707623541355133,
+      "max_joint_speed_rad_s": 3.000002861022949,
+      "settled_max_joint_speed_rad_s": 0.6840823888778687,
+      "max_tracking_error_deg": 10.848641395568848,
+      "settled_joint_std_deg": 7.122744136722758e-05,
+      "final_joint_deg": [
+        3.788716469443898e-07,
+        0.16449061036109924,
+        0.2765125036239624,
+        75.14507293701172,
+        89.37755584716797,
+        74.23250579833984,
+        85.83375549316406,
+        72.3614501953125,
+        87.23169708251953,
+        79.875244140625,
+        96.43060302734375
+      ]
+    },
+    {
+      "phase": "6_open",
+      "max_joint_limit_violation_deg": 0.01366634201258421,
+      "max_joint_speed_rad_s": 3.0000033378601074,
+      "settled_max_joint_speed_rad_s": 0.5171775817871094,
+      "max_tracking_error_deg": 0.1644907295703888,
+      "settled_joint_std_deg": 4.26886799687054e-07,
+      "final_joint_deg": [
+        3.726108275259321e-07,
+        0.16449066996574402,
+        0.27651336789131165,
+        0.03662974759936333,
+        0.6344000101089478,
+        0.04317132383584976,
+        0.6344000101089478,
+        0.03678053617477417,
+        0.634399950504303,
+        0.03388964384794235,
+        0.6344000101089478
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "phase": "0_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 5760,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "0_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 4320,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2398,
+      "min_separation_m": -9.526156645733863e-06,
+      "settled_min_separation_m": -7.538953013863647e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 3820,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 11106,
+      "min_separation_m": -1.0148351975658443e-05,
+      "settled_min_separation_m": -7.2126031227526255e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 4224,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 6882,
+      "min_separation_m": -6.930523340997752e-06,
+      "settled_min_separation_m": -6.855173069197917e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2118,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 7420,
+      "min_separation_m": -2.6817820071300957e-06,
+      "settled_min_separation_m": -2.6817820071300957e-06
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 2928,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 15788,
+      "min_separation_m": -3.216220534341119e-07,
+      "settled_min_separation_m": -2.2876275806993362e-07
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 252,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 78,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 170,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 120,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 160,
+      "min_separation_m": -2.368104651395697e-05,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger14_link / hand_finger33_link",
+      "samples": 128,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 1002,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2306,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2318,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 774,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "1_rock",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 984,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 560,
+      "min_separation_m": -7.14772249921225e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 424,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 1328,
+      "min_separation_m": -7.18126693755039e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 520,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 868,
+      "min_separation_m": -6.896345894347178e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 264,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 938,
+      "min_separation_m": -2.669558170964592e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 188,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 1078,
+      "min_separation_m": -2.3623549338935845e-07,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 392,
+      "min_separation_m": -6.563495844602585e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 164,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 110,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 46,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 22,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 5122,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2774,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2770,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 4450,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "2_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 3730,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2398,
+      "min_separation_m": -9.568896530254278e-06,
+      "settled_min_separation_m": -7.566715794382617e-06
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2118,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 7420,
+      "min_separation_m": -2.6853313102037646e-06,
+      "settled_min_separation_m": -2.6723337214207277e-06
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 2928,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 15788,
+      "min_separation_m": -3.158441472805862e-07,
+      "settled_min_separation_m": -2.1661884375134832e-07
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 772,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "3_scissors",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 982,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 2880,
+      "min_separation_m": -9.652549124439247e-06,
+      "settled_min_separation_m": -7.594843282276997e-06
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 3458,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 5928,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 10080,
+      "min_separation_m": -2.6853313102037646e-06,
+      "settled_min_separation_m": -2.673092694749357e-06
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 4320,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 23040,
+      "min_separation_m": -1.3893034633838397e-07,
+      "settled_min_separation_m": -1.3893034633838397e-07
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 2104,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger12_link / hand_finger33_link",
+      "samples": 58,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger13_link / hand_finger32_link",
+      "samples": 278,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger13_link / hand_finger33_link",
+      "samples": 582,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger14_link / hand_finger32_link",
+      "samples": 844,
+      "min_separation_m": -8.06860625743866e-05,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger14_link / hand_finger33_link",
+      "samples": 1676,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 6480,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2348,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2364,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "4_one",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger12_link",
+      "samples": 560,
+      "min_separation_m": -7.378589089057641e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 3820,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 11102,
+      "min_separation_m": -9.875348041532561e-06,
+      "settled_min_separation_m": -7.2145617195928935e-06
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 5040,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 8640,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 10080,
+      "min_separation_m": -2.673092694749357e-06,
+      "settled_min_separation_m": -2.6723337214207277e-06
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 4320,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 23040,
+      "min_separation_m": -1.3893034633838397e-07,
+      "settled_min_separation_m": -1.3893034633838397e-07
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger12_link / hand_finger32_link",
+      "samples": 562,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 1004,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 1578,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2160,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "5_thumbs_up",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger22_link",
+      "samples": 424,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger23_link",
+      "samples": 1328,
+      "min_separation_m": -7.2145617195928935e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger32_link",
+      "samples": 488,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger33_link",
+      "samples": 820,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger42_link",
+      "samples": 264,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger43_link",
+      "samples": 938,
+      "min_separation_m": -2.673092694749357e-06,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger52_link",
+      "samples": 188,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_base_link / hand_finger53_link",
+      "samples": 1078,
+      "min_separation_m": -1.3893034633838397e-07,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger21_link / hand_finger23_link",
+      "samples": 5122,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger21_link / hand_finger31_link",
+      "samples": 2704,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger31_link / hand_finger41_link",
+      "samples": 2770,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger41_link / hand_finger43_link",
+      "samples": 4450,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger41_link / hand_finger51_link",
+      "samples": 2880,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    },
+    {
+      "phase": "6_open",
+      "pair": "hand_finger51_link / hand_finger53_link",
+      "samples": 3730,
+      "min_separation_m": 0.0,
+      "settled_min_separation_m": 0.0
+    }
+  ],
+  "acceptance": {
+    "sampled_max_penetration_mm": 0.0806860625743866,
+    "max_joint_limit_violation_deg": 0.5962720513343811,
+    "max_settled_joint_std_deg": 0.08464553952217102,
+    "scope": "7 deterministic gesture phases, sampled at each physics step; no real-hand calibration",
+    "passed": true
+  }
+}

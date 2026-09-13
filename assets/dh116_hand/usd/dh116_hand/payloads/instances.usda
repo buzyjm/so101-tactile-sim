@@ -1,0 +1,432 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    doc = """Generated from Composed Stage of root layer /tmp/tmp6bdwsvcl/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_otrv6onk/usdex_dh116_hand/dh116_hand.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_dh116_hand_otrv6onk/temp_dh116_hand/dh116_hand.usd
+
+
+Generated from Composed Stage of root layer /home/buzyjm/isaac_work/assets/dh116_hand/usd/dh116_hand/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "base_link" (
+        prepend references = @./geometries.usd@</Geometries/base_link>
+    )
+    {
+        over "base_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/base_link/VisualMaterials/material_1>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_1" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger11_link" (
+        prepend references = @./geometries.usd@</Geometries/finger11_link>
+    )
+    {
+        over "finger11_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger11_link/VisualMaterials/material_2>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_2" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger12_link" (
+        prepend references = @./geometries.usd@</Geometries/finger12_link>
+    )
+    {
+        over "finger12_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger12_link/VisualMaterials/material_3>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_3" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger13_link" (
+        prepend references = @./geometries.usd@</Geometries/finger13_link>
+    )
+    {
+        over "finger13_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger13_link/VisualMaterials/material_4>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_4" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger14_link" (
+        prepend references = @./geometries.usd@</Geometries/finger14_link>
+    )
+    {
+        over "finger14_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger14_link/VisualMaterials/material_5>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_5" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_5>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger21_link" (
+        prepend references = @./geometries.usd@</Geometries/finger21_link>
+    )
+    {
+        over "finger21_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger21_link/VisualMaterials/material_6>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_6" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger22_link" (
+        prepend references = @./geometries.usd@</Geometries/finger22_link>
+    )
+    {
+        over "finger22_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger22_link/VisualMaterials/material_7>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_7" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger23_link" (
+        prepend references = @./geometries.usd@</Geometries/finger23_link>
+    )
+    {
+        over "finger23_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger23_link/VisualMaterials/material_8>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_8" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_5>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger31_link" (
+        prepend references = @./geometries.usd@</Geometries/finger31_link>
+    )
+    {
+        over "finger31_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger31_link/VisualMaterials/material_9>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_9" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger32_link" (
+        prepend references = @./geometries.usd@</Geometries/finger32_link>
+    )
+    {
+        over "finger32_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger32_link/VisualMaterials/material_10>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_10" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger33_link" (
+        prepend references = @./geometries.usd@</Geometries/finger33_link>
+    )
+    {
+        over "finger33_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger33_link/VisualMaterials/material_11>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_11" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_5>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger41_link" (
+        prepend references = @./geometries.usd@</Geometries/finger41_link>
+    )
+    {
+        over "finger41_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger41_link/VisualMaterials/material_12>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_12" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger42_link" (
+        prepend references = @./geometries.usd@</Geometries/finger42_link>
+    )
+    {
+        over "finger42_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger42_link/VisualMaterials/material_13>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_13" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger43_link" (
+        prepend references = @./geometries.usd@</Geometries/finger43_link>
+    )
+    {
+        over "finger43_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger43_link/VisualMaterials/material_14>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_14" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_5>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger51_link" (
+        prepend references = @./geometries.usd@</Geometries/finger51_link>
+    )
+    {
+        over "finger51_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger51_link/VisualMaterials/material_15>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_15" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger52_link" (
+        prepend references = @./geometries.usd@</Geometries/finger52_link>
+    )
+    {
+        over "finger52_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger52_link/VisualMaterials/material_16>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_16" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_1>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "finger53_link" (
+        prepend references = @./geometries.usd@</Geometries/finger53_link>
+    )
+    {
+        over "finger53_link" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/finger53_link/VisualMaterials/material_17>
+            token physics:approximation = "convexDecomposition"
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "material_17" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/material_5>
+            )
+            {
+            }
+        }
+    }
+}
+

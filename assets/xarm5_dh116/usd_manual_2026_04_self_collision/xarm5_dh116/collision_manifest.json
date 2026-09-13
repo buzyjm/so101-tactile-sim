@@ -1,0 +1,52 @@
+{
+  "source": "assets/xarm5_dh116/usd_manual_2026_04/xarm5_dh116",
+  "asset": "assets/xarm5_dh116/usd_manual_2026_04_self_collision/xarm5_dh116/xarm5_dh116.usda",
+  "colliders": [
+    "/Instances/link_base/link_base",
+    "/Instances/link1/link1",
+    "/Instances/link2/link2",
+    "/Instances/link3/link3",
+    "/Instances/link4/link4",
+    "/Instances/link5/link5",
+    "/Instances/flange_adapter/flange_adapter",
+    "/Instances/base_link/base_link",
+    "/Instances/finger11_link/finger11_link",
+    "/Instances/finger12_link/finger12_link",
+    "/Instances/finger13_link/finger13_link",
+    "/Instances/finger14_link/finger14_link",
+    "/Instances/finger21_link/finger21_link",
+    "/Instances/finger22_link/finger22_link",
+    "/Instances/finger23_link/finger23_link",
+    "/Instances/finger31_link/finger31_link",
+    "/Instances/finger32_link/finger32_link",
+    "/Instances/finger33_link/finger33_link",
+    "/Instances/finger41_link/finger41_link",
+    "/Instances/finger42_link/finger42_link",
+    "/Instances/finger43_link/finger43_link",
+    "/Instances/finger51_link/finger51_link",
+    "/Instances/finger52_link/finger52_link",
+    "/Instances/finger53_link/finger53_link"
+  ],
+  "roots": [
+    "/xarm5_dh116/Geometry"
+  ],
+  "filtered_pairs": [],
+  "parameters": {
+    "contact_offset_m": 0.001,
+    "rest_offset_m": 0.0,
+    "position_iterations": 64,
+    "velocity_iterations": 8,
+    "max_depenetration_velocity_m_s": 1.0
+  },
+  "source_sha256": {
+    "payloads/Physics/mujoco.usda": "3c7c7397ab84bc96a4e18fbecd398d78e22886e6aa71765de464eb372a6bd030",
+    "payloads/Physics/physics.usda": "8a7d2578663272894e95e040a655a5d6e6a255ee94bcdd0eadcfc4e4b0c2d7d2",
+    "payloads/Physics/physx.usda": "f3967e8de27b2f5913b317a7541f5cc4d50888aa5f204edca3abf12afc0429e3",
+    "payloads/base.usda": "229415e3ca6278676e74a698f3102f29c1bc7c238b52b5d8e1629bf8f8a36645",
+    "payloads/geometries.usd": "0e9c1a7942adf954dd422dafd72e6745e22a0aca896beb70bc353de259d973fb",
+    "payloads/instances.usda": "85f27066a12c8dc19e61bd5ef6cef93711a97db21e6eb07ff93b07052f108bdf",
+    "payloads/materials.usda": "7e5530c2a708cf7b39dc8dd46a5cf04ad8b53c76a256a04e2e3b92cc1281fd8c",
+    "payloads/robot.usda": "a566704a82bd8e12d7464f5c70b5dba471626f43861a3a0a90df2cf9d6b1b01b",
+    "xarm5_dh116.usda": "64acea817e03e91fe37c5c54a5f1d5c5748f62b7b1d6ed2b045153850e3fefa9"
+  }
+}
