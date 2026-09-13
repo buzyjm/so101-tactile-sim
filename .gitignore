@@ -42,3 +42,4 @@ xarm5_dh116_*.usda
 
 # RL training runs (checkpoints, tensorboard)
 logs/
+DH116 Series Dexterous User Manual.pdf
