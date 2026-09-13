@@ -83,6 +83,14 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path(__file__).resolve().parents[2] / "renders",
     )
+    parser.add_argument(
+        "--dump-waypoints",
+        type=Path,
+        default=None,
+        help="Write the solved joint waypoints, phase plan and reference "
+             "world poses to this JSON file, for replaying the trajectory "
+             "in the Isaac Lab parallel environment.",
+    )
     return parser.parse_args()
 
 
@@ -802,6 +810,60 @@ def main() -> int:
         )
         print(f"[rest] drift over final 0.5 s = {final_drift_m * 1000:.2f} mm")
 
+    def dump_waypoints_json() -> None:
+        import json
+
+        def world_matrix(prim_path: str) -> list[list[float]]:
+            prim = stage.GetPrimAtPath(prim_path)
+            transform = UsdGeom.Xformable(prim).ComputeLocalToWorldTransform(0)
+            return [list(map(float, row)) for row in transform]
+
+        base_link_path = "/World/Robot/Geometry/base_link"
+        # The executed sequence from the move()/hold() calls above, expressed
+        # so a replayer can rebuild the exact drive-target timeline: quintic
+        # blend from the previous command to (arm_key, gripper_deg) over
+        # duration_s, or hold the last command.
+        phase_plan = [
+            {"label": "approach", "arm": "approach", "gripper_deg": OPEN_GRIPPER_DEG, "duration_s": 1.0},
+            {"label": "descend", "arm": "grasp", "gripper_deg": OPEN_GRIPPER_DEG, "duration_s": 1.0},
+            {"label": "close", "arm": "grasp", "gripper_deg": close_angle, "duration_s": 0.8},
+            {"label": "grip_hold", "arm": None, "gripper_deg": None, "duration_s": 0.25},
+            {"label": "lift", "arm": "lift", "gripper_deg": close_angle, "duration_s": 1.4},
+            {"label": "lift_hold", "arm": None, "gripper_deg": None, "duration_s": 0.4},
+        ]
+        if ARGS.mode == "pick-place" and "transfer" in solutions:
+            phase_plan += [
+                {"label": "transfer", "arm": "transfer", "gripper_deg": close_angle, "duration_s": 1.6},
+                {"label": "bowl_hover", "arm": "bowl_hover", "gripper_deg": close_angle, "duration_s": 1.6},
+                {"label": "release", "arm": "bowl_hover", "gripper_deg": OPEN_GRIPPER_DEG, "duration_s": 0.7},
+                {"label": "settle", "arm": None, "gripper_deg": None, "duration_s": 1.5},
+                {"label": "retreat", "arm": "retreat", "gripper_deg": OPEN_GRIPPER_DEG, "duration_s": 0.8},
+                {"label": "post_retreat", "arm": None, "gripper_deg": None, "duration_s": 2.0},
+            ]
+        dump = {
+            "arm_joint_names": list(arm_joint_names),
+            "solutions_rad": {
+                label: [float(v) for v in joints]
+                for label, joints in solutions.items()
+            },
+            "open_gripper_deg": OPEN_GRIPPER_DEG,
+            "close_angle_deg": float(close_angle),
+            "phase_plan": phase_plan,
+            "physics_hz": PHYSICS_HZ,
+            "ball_start": [float(v) for v in BALL_START],
+            "bowl_center": [float(v) for v in BOWL_CENTER],
+            "final_ball_position": [float(v) for v in final_ball_position],
+            "lift_delta_m": lift_delta,
+            "base_link_world": world_matrix(base_link_path),
+            "gripper_link_world": world_matrix(GRIPPER_LINK_PRIM_PATH),
+            "moving_jaw_world": world_matrix(
+                GRIPPER_LINK_PRIM_PATH + "/moving_jaw_so101_v1_link"),
+        }
+        ARGS.dump_waypoints.parent.mkdir(parents=True, exist_ok=True)
+        ARGS.dump_waypoints.write_text(json.dumps(dump, indent=2))
+        print(f"[dump] waypoints -> {ARGS.dump_waypoints}")
+        sys.stdout.flush()
+
     stem = (
         "scripted_ball_grasp"
         if ARGS.mode == "grasp"
@@ -825,6 +887,8 @@ def main() -> int:
     task_success = lift_success and (
         ARGS.mode == "grasp" or placed_success
     )
+    if ARGS.dump_waypoints is not None:
+        dump_waypoints_json()
 
     ARGS.output_dir.mkdir(parents=True, exist_ok=True)
     video_path = ARGS.output_dir / f"{stem}.mp4"

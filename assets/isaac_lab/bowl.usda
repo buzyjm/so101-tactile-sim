@@ -1,0 +1,64 @@
+#usda 1.0
+(
+    defaultPrim = "Bowl"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+# The real concave bowl from the standalone scene, wrapped clone-safe for
+# Isaac Lab.  The solid-cylinder stand-in was fine for scoring against, but a
+# released ball landed on its flat top and rolled off, so the nominal
+# trajectory could never finish "in the bowl" in the parallel scene.  The
+# referenced Wall mesh is a static triangle-mesh collider, which PhysX accepts
+# for non-dynamic bodies.
+# Note: leave this bowl STATIC.  Every rigid-body variant tried (kinematic,
+# dynamic shapeless, referenced, flattened, opaque) parses and simulates but
+# never reaches the renderer in the cloned pipeline, so per-environment bowl
+# placement is currently not possible -- only the dynamic analytic-sphere
+# ball both renders and accepts pose writes.
+def Xform "Bowl" (
+    prepend references = @../../lab_scene.usda@</World/Bowl>
+)
+{
+    # Cancel the baked scene position: each clone is placed by the scene cfg.
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate"]
+
+    # The referenced prims bind physics materials at /World/PhysicsMaterials,
+    # which does not exist in this composition; redeclare the plastic
+    # material locally, same values as scene_config PHYSICS_MATERIALS.
+    def Scope "PhysicsMaterials"
+    {
+        def Material "plastic" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:staticFriction = 0.55
+            float physics:dynamicFriction = 0.42
+            float physics:restitution = 0.05
+        }
+    }
+
+    # The referenced visual bindings target /World/Looks, also dead here, so
+    # the prims fall back to their displayColor primvars.  The authored 0.16
+    # display opacity is invisible from the overview camera; raise it so the
+    # bowls read on video while keeping the glassy tint.
+    over "Base"
+    {
+        rel material:binding:physics = </Bowl/PhysicsMaterials/plastic>
+        float[] primvars:displayOpacity = [0.6]
+        # Thickened from the authored 1.5 mm: a centred release drops the
+        # ball at ~1 m/s, which travels 4.2 mm per 240 Hz step and tunnels
+        # straight through a 1.5 mm plate (no CCD field in this Isaac Lab
+        # version).  6 mm sits below one step's travel; the raised inner
+        # floor is invisible from outside.
+        double height = 0.006
+        double3 xformOp:translate = (0, 0, 0.003)
+    }
+
+    over "Wall"
+    {
+        rel material:binding:physics = </Bowl/PhysicsMaterials/plastic>
+        float[] primvars:displayOpacity = [0.6]
+    }
+}

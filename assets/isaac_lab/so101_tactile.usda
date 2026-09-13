@@ -11,4 +11,95 @@ def Xform "Robot" (
     prepend references = @../../lab_scene.usda@</World/Robot>
 )
 {
+    # The standalone scene binds its gripper_pad physics material (the
+    # friction that actually holds the ball: 1.6 static / 1.36 dynamic) onto
+    # gripper_link and the moving jaw, but that binding targets
+    # /World/PhysicsMaterials/gripper_pad -- a path outside the referenced
+    # robot subtree, so it dies in this composition and the pads fell back to
+    # the 0.5 default.  The grasp then seats identically to the standalone
+    # (pad forces match to 0.1 N) yet the ball slips out during the lift.
+    # Redeclare the material inside the asset and rebind; internal paths are
+    # namespace-mapped per clone.
+    def Scope "PhysicsMaterials"
+    {
+        # Carries a real surface shader as well: an empty Material renders
+        # pitch black wherever Kit's binding resolution picks it up, which
+        # blacked out the fingertips in the first parallel renders.
+        def Material "gripper_pad" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </Robot/PhysicsMaterials/gripper_pad/Shader.outputs:surface>
+
+            float physics:staticFriction = 1.6
+            float physics:dynamicFriction = 1.36
+            float physics:restitution = 0
+
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.82, 0.83, 0.85)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "shoulder_link"
+            {
+                over "upper_arm_link"
+                {
+                    over "lower_arm_link"
+                    {
+                        over "wrist_link"
+                        {
+                            over "gripper_link"
+                            {
+                                rel material:binding:physics = </Robot/PhysicsMaterials/gripper_pad>
+
+                                over "TactileCadAdapter"
+                                {
+                                    float3[] primvars:displayColor = [(0.2, 0.22, 0.24)]
+                                }
+
+                                over "TactileFixedMount"
+                                {
+                                    float3[] primvars:displayColor = [(0.16, 0.17, 0.19)]
+                                }
+
+                                over "moving_jaw_so101_v1_link"
+                                {
+                                    rel material:binding:physics = </Robot/PhysicsMaterials/gripper_pad>
+
+                                    over "TactileCadAdapter"
+                                    {
+                                        float3[] primvars:displayColor = [(0.2, 0.22, 0.24)]
+                                    }
+
+                                    over "TactileMovingMount"
+                                    {
+                                        float3[] primvars:displayColor = [(0.16, 0.17, 0.19)]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    # Note on the root_joint (child prim Physics/root_joint): it is what
+    # makes the articulation fixed-base -- disabling it leaves the robot
+    # free-floating.  PhysX consumes it as pure topology when parsing the
+    # articulation: sweeping physics:localRot0 over five different rotations
+    # produced bit-identical behaviour, so do not try to fix base orientation
+    # here.  The base pose comes from the root-pose write at reset, whose
+    # quaternion ordering quirk is compensated in
+    # so101_isaac_lab/scene_cfg.py (_TASK_INIT_STATE).
 }

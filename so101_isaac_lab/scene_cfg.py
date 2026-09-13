@@ -15,15 +15,21 @@ from isaaclab.utils import configclass
 from so101_isaac_lab.sensors import DPS2015ContactSensorCfg
 from scene_config import (
     BOWL_CENTER_XY_PLACEHOLDER,
+    FLOOR_Z,
     ROBOT_BASE_YAW_DEG,
-    BOWL_COLOR,
-    BOWL_HEIGHT,
-    BOWL_OPACITY,
-    BOWL_OUTER_TOP_DIAMETER,
     PHYSICS_MATERIALS,
     TABLE_CENTER,
     TABLE_COLOR,
+    TABLE_FRAME_COLOR,
     TABLE_LENGTH,
+    TABLE_PEDESTAL_COLUMN_CENTER_Z,
+    TABLE_PEDESTAL_COLUMN_HEIGHT,
+    TABLE_PEDESTAL_COLUMN_SIZE_XY_PLACEHOLDER,
+    TABLE_PEDESTAL_FOOT_CENTER_Z,
+    TABLE_PEDESTAL_FOOT_SIZE_PLACEHOLDER,
+    TABLE_PEDESTAL_TOP_SUPPORT_CENTER_Z,
+    TABLE_PEDESTAL_TOP_SUPPORT_SIZE_PLACEHOLDER,
+    TABLE_PEDESTAL_X_POSITIONS,
     TABLE_TOP_THICKNESS,
     TABLE_TOP_Z,
     TABLE_WIDTH,
@@ -98,9 +104,50 @@ SO101_TACTILE_CFG = ArticulationCfg(
         "all_joints": ImplicitActuatorCfg(
             joint_names_expr=[".*"],
             effort_limit_sim=10.0,
-            stiffness=8.0,
-            damping=0.5,
+            # The scripted standalone task runs on the drive gains authored in
+            # the USD: 0.31 N*m/deg and 0.0105 N*m*s/deg -- USD angular drives
+            # are per-degree, so in Isaac Lab's per-radian units that is 17.8
+            # and 0.6.  The previous 8.0 was less than half as stiff and let
+            # the arm sag visibly under gravity.
+            stiffness=17.8,
+            damping=0.6,
         )
+    },
+)
+
+
+# Initial state for the pick-and-place scene, replacing the shared smoke-scene
+# defaults: the same semantic base yaw, but idling in the scripted task's
+# "approach" pose.
+#
+# The rot is authored in (x, y, z, w) order even though the field is
+# documented as (w, x, y, z): for this asset (floating-base articulation held
+# by a world fixed joint, ArticulationRootAPI on the non-rigid /Geometry
+# Xform) the root-pose write path consumes the quaternion shifted by one
+# component -- phys = (w=cmd[3], x=cmd[0], y=cmd[1], z=cmd[2]).  Calibrated
+# against the standalone task's measured gripper pose: two probe poses match
+# the standalone to within droop noise only under this permutation (see
+# scripts/isaac_lab/record_parallel_pick_place.py --probe_pose).  With the
+# documented order the robot ends up pitched 90 degrees, lying on its side --
+# the broken mount in the first parallel render.
+_TASK_INIT_STATE = ArticulationCfg.InitialStateCfg(
+    rot=(
+        0.0,
+        0.0,
+        math.sin(math.radians(ROBOT_BASE_YAW_DEG) / 2.0),
+        math.cos(math.radians(ROBOT_BASE_YAW_DEG) / 2.0),
+    ),
+    joint_pos={
+        # The scripted task's "approach" IK solution (hover above the ball,
+        # jaw open), from calibration/pick_place_waypoints_nominal.json.  It
+        # is collision-free by construction, and idling here means the replay
+        # timeline starts from exactly this command.
+        "shoulder_pan": 0.2939,
+        "shoulder_lift": -0.2482,
+        "elbow_flex": 1.0409,
+        "wrist_flex": -0.5305,
+        "wrist_roll": -1.5140,
+        "gripper": 1.2217,
     },
 )
 
@@ -151,6 +198,24 @@ class TactileSmokeSceneCfg(InteractiveSceneCfg):
     )
 
 
+def _pedestal_part_cfg(
+    name: str, pedestal_index: int, size: tuple[float, float, float],
+    center_z: float,
+) -> AssetBaseCfg:
+    """One cuboid of a table pedestal, sized/placed from scene_config."""
+    return AssetBaseCfg(
+        prim_path=f"{{ENV_REGEX_NS}}/{name}",
+        spawn=sim_utils.CuboidCfg(
+            size=size,
+            visual_material=sim_utils.PreviewSurfaceCfg(
+                diffuse_color=TABLE_FRAME_COLOR, roughness=0.7),
+        ),
+        init_state=AssetBaseCfg.InitialStateCfg(
+            pos=(TABLE_PEDESTAL_X_POSITIONS[pedestal_index], TABLE_CENTER[1],
+                 center_z)),
+    )
+
+
 @configclass
 class BallPickPlaceSceneCfg(InteractiveSceneCfg):
     """The pick-and-place task, cloned across parallel environments.
@@ -166,18 +231,18 @@ class BallPickPlaceSceneCfg(InteractiveSceneCfg):
 
     # Isaac Lab's stock grid plane -- the same asset every published example
     # renders on, so the demo reads as an Isaac Lab scene rather than a robot
-    # floating in white space.  It sits at the table's underside (z = -10 mm),
-    # not at z = 0: the tabletop IS z = 0 here, so a coplanar floor would
-    # z-fight with every tabletop in the grid.  Declared before the robot
+    # floating in white space.  It sits at the measured lab-floor height, the
+    # tabletop being z = 0; the tables stand on their pedestals instead of
+    # having the plane glued to their underside.  Declared before the robot
     # because InteractiveScene spawns terrain first.
     ground = AssetBaseCfg(
         prim_path="/World/GroundPlane",
         spawn=sim_utils.GroundPlaneCfg(),
-        init_state=AssetBaseCfg.InitialStateCfg(
-            pos=(0.0, 0.0, TABLE_CENTER[2] - TABLE_TOP_THICKNESS / 2.0)),
+        init_state=AssetBaseCfg.InitialStateCfg(pos=(0.0, 0.0, FLOOR_Z)),
     )
 
-    robot: ArticulationCfg = SO101_TACTILE_CFG
+    robot: ArticulationCfg = SO101_TACTILE_CFG.replace(
+        init_state=_TASK_INIT_STATE)
 
     table = AssetBaseCfg(
         prim_path="{ENV_REGEX_NS}/Table",
@@ -195,6 +260,33 @@ class BallPickPlaceSceneCfg(InteractiveSceneCfg):
         init_state=AssetBaseCfg.InitialStateCfg(
             pos=(TABLE_CENTER[0], TABLE_CENTER[1], TABLE_CENTER[2])),
     )
+
+    # The two T-shaped pedestals from the standalone scene, so the tables
+    # stand on the floor instead of reading as slabs lying on the ground
+    # plane.  Visual-only: nothing in the task can touch them, so collision
+    # shapes would just add parse cost across the clone grid.
+    pedestal_a_foot = _pedestal_part_cfg(
+        "PedestalAFoot", 0, TABLE_PEDESTAL_FOOT_SIZE_PLACEHOLDER,
+        TABLE_PEDESTAL_FOOT_CENTER_Z)
+    pedestal_a_column = _pedestal_part_cfg(
+        "PedestalAColumn", 0,
+        (*TABLE_PEDESTAL_COLUMN_SIZE_XY_PLACEHOLDER,
+         TABLE_PEDESTAL_COLUMN_HEIGHT),
+        TABLE_PEDESTAL_COLUMN_CENTER_Z)
+    pedestal_a_top = _pedestal_part_cfg(
+        "PedestalATop", 0, TABLE_PEDESTAL_TOP_SUPPORT_SIZE_PLACEHOLDER,
+        TABLE_PEDESTAL_TOP_SUPPORT_CENTER_Z)
+    pedestal_b_foot = _pedestal_part_cfg(
+        "PedestalBFoot", 1, TABLE_PEDESTAL_FOOT_SIZE_PLACEHOLDER,
+        TABLE_PEDESTAL_FOOT_CENTER_Z)
+    pedestal_b_column = _pedestal_part_cfg(
+        "PedestalBColumn", 1,
+        (*TABLE_PEDESTAL_COLUMN_SIZE_XY_PLACEHOLDER,
+         TABLE_PEDESTAL_COLUMN_HEIGHT),
+        TABLE_PEDESTAL_COLUMN_CENTER_Z)
+    pedestal_b_top = _pedestal_part_cfg(
+        "PedestalBTop", 1, TABLE_PEDESTAL_TOP_SUPPORT_SIZE_PLACEHOLDER,
+        TABLE_PEDESTAL_TOP_SUPPORT_CENTER_Z)
 
     ball = RigidObjectCfg(
         prim_path="{ENV_REGEX_NS}/TargetBall",
@@ -218,25 +310,32 @@ class BallPickPlaceSceneCfg(InteractiveSceneCfg):
                  TABLE_TOP_Z + TARGET_BALL_RADIUS)),
     )
 
-    # Static, like the scripted scene: a cylinder standing in for the bowl's
-    # footprint so the ball has somewhere to be placed and scored against.
-    bowl = AssetBaseCfg(
+    # The real concave bowl, split in two so each environment can place its
+    # own (see the header comments in the two assets): a kinematic rigid
+    # body carries the colliders and accepts per-env pose writes but never
+    # renders, and a collision-free static twin does the drawing and follows
+    # per-env USD transform edits.  Both default to the scripted trajectory's
+    # measured release point -- the Lab grasp seats the ball at the pad
+    # apexes, ~40 mm shallower in the hand than the standalone's deep seat,
+    # so the drop lands there rather than at the calibrated scene position.
+    bowl = RigidObjectCfg(
         prim_path="{ENV_REGEX_NS}/Bowl",
-        spawn=sim_utils.CylinderCfg(
-            radius=BOWL_OUTER_TOP_DIAMETER / 2.0,
-            height=BOWL_HEIGHT,
-            collision_props=sim_utils.CollisionPropertiesCfg(),
-            physics_material=sim_utils.RigidBodyMaterialCfg(
-                static_friction=PHYSICS_MATERIALS["plastic"][0],
-                dynamic_friction=PHYSICS_MATERIALS["plastic"][1],
-                restitution=PHYSICS_MATERIALS["plastic"][2],
-            ),
-            visual_material=sim_utils.PreviewSurfaceCfg(
-                diffuse_color=BOWL_COLOR, roughness=0.35, opacity=BOWL_OPACITY),
+        spawn=sim_utils.UsdFileCfg(
+            usd_path=str(PROJECT_ROOT / "assets" / "isaac_lab"
+                         / "bowl_phys.usda"),
+        ),
+        init_state=RigidObjectCfg.InitialStateCfg(
+            pos=(0.2588, 0.2467, TABLE_TOP_Z)),
+    )
+
+    bowl_vis = AssetBaseCfg(
+        prim_path="{ENV_REGEX_NS}/BowlVis",
+        spawn=sim_utils.UsdFileCfg(
+            usd_path=str(PROJECT_ROOT / "assets" / "isaac_lab"
+                         / "bowl_scenery.usda"),
         ),
         init_state=AssetBaseCfg.InitialStateCfg(
-            pos=(BOWL_CENTER_XY_PLACEHOLDER[0], BOWL_CENTER_XY_PLACEHOLDER[1],
-                 TABLE_TOP_Z + BOWL_HEIGHT / 2.0)),
+            pos=(0.2588, 0.2467, TABLE_TOP_Z)),
     )
 
     tactile_fixed = DPS2015ContactSensorCfg(

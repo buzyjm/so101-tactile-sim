@@ -1,0 +1,25 @@
+#usda 1.0
+(
+    defaultPrim = "BowlScenery"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+# Render half of the per-environment bowl: plain static geometry (which the
+# renderer always follows, USD edits included) with every collider disabled
+# so the kinematic physics twin in bowl_phys.usda is the only thing balls
+# can touch.
+def Xform "BowlScenery" (
+    prepend references = @./bowl.usda@</Bowl>
+)
+{
+    over "Base"
+    {
+        bool physics:collisionEnabled = 0
+    }
+
+    over "Wall"
+    {
+        bool physics:collisionEnabled = 0
+    }
+}

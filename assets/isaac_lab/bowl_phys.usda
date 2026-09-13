@@ -1,0 +1,21 @@
+#usda 1.0
+(
+    defaultPrim = "BowlPhys"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+# Physics half of the per-environment bowl: a kinematic rigid body carries
+# the real trimesh colliders and accepts per-env root-pose writes (static
+# colliders ignore post-parse USD edits).  Kinematic bodies never reach the
+# renderer in this pipeline, so it is marked invisible outright and the
+# collision-free static twin in bowl_scenery.usda does the drawing.
+def Xform "BowlPhys" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+    prepend references = @./bowl.usda@</Bowl>
+)
+{
+    bool physics:kinematicEnabled = 1
+    float physics:mass = 0.15
+    token visibility = "invisible"
+}
