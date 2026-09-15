@@ -7,17 +7,17 @@ import torch
 from isaaclab.envs import ManagerBasedEnv, ManagerBasedRLEnv
 from isaaclab.managers import SceneEntityCfg
 
-from so101_isaac_lab.sensors import DPS2015ContactSensor
+from so101_isaac_lab.sensors import DPS2015TactileCore
 from so101_isaac_lab.tactile_tensor import TactileTensorBatch
 
 
 def _sensor(
     env: ManagerBasedEnv, cfg: SceneEntityCfg
-) -> DPS2015ContactSensor:
+) -> DPS2015TactileCore:
     sensor = env.scene[cfg.name]
-    if not isinstance(sensor, DPS2015ContactSensor):
+    if not isinstance(sensor, DPS2015TactileCore):
         raise TypeError(
-            f"Scene entity '{cfg.name}' must be DPS2015ContactSensor, got "
+            f"Scene entity '{cfg.name}' must be a DPS2015 tactile sensor, got "
             f"{type(sensor).__name__}"
         )
     return sensor

@@ -1,8 +1,16 @@
-"""PhysX-backed, product-rate 52-taxel ContactSensor for Isaac Lab 3.0.
+"""Product-rate 52-taxel fingertip ContactSensor for Isaac Lab 3.0.
 
 Each instance monitors exactly one fingertip rigid body.  Isaac Lab calls the
 sensor at every physics step, so the class can integrate at 240 Hz and hold its
 latest sample at the DP-S2015-Elite 83.3 Hz device rate.
+
+The sensor exists for two physics backends.  :class:`DPS2015PhysXContactSensor`
+reads PhysX's per-point contact buffers; :class:`DPS2015NewtonContactSensor`
+(in :mod:`tactile_contact_sensor_newton`) reads Newton's raw contact buffer.
+Both share :class:`DPS2015TactileCore`, which owns the device frame, the
+taxel mapper and the output clock, and both are created through the
+:class:`DPS2015ContactSensor` factory that the scene config names as
+``class_type``.
 """
 
 from __future__ import annotations
@@ -60,6 +68,17 @@ def _quat_multiply_xyzw(left: torch.Tensor, right: torch.Tensor) -> torch.Tensor
     return torch.cat((xyz, real), dim=-1)
 
 
+def active_physics_backend() -> str:
+    """Return ``"newton"`` or ``"physx"`` for the running SimulationContext."""
+    from isaaclab.sim.simulation_context import SimulationContext
+
+    sim = SimulationContext.instance()
+    if sim is None:
+        return "physx"
+    name = sim.physics_manager.__name__.lower()
+    return "newton" if name.startswith("newton") else "physx"
+
+
 @configclass
 class DPS2015ContactSensorCfg(ContactSensorCfg):
     """Configuration for one DP-S2015-Elite fingertip sensor."""
@@ -85,21 +104,32 @@ class DPS2015ContactSensorCfg(ContactSensorCfg):
                 "At least one filter_prim_paths_expr is required to obtain "
                 "per-contact positions"
             )
+        # PhysX per-point buffers.  The Newton implementation reads the raw
+        # contact buffer instead; its cfg conversion drops these fields with
+        # a warning, which is expected.
         self.track_contact_points = True
         self.track_friction_forces = True
         if self.max_contact_data_count_per_prim is None:
             self.max_contact_data_count_per_prim = 32
 
 
-class DPS2015ContactSensor(PhysXContactSensor):
-    """One-fingertip PhysX contact sensor with a 52-taxel output buffer."""
+class DPS2015TactileCore:
+    """Backend-independent half of the fingertip sensor.
 
-    cfg: DPS2015ContactSensorCfg
+    Owns the device frame offset, the taxel mapper and the 83.3 Hz output
+    clock.  A backend class provides :meth:`_sensing_body_pose_w` and feeds
+    world-frame contact points into :meth:`_publish_contacts`.
+    """
 
-    def __init__(self, cfg: DPS2015ContactSensorCfg) -> None:
-        super().__init__(cfg)
-        self._mapper: TactileTensorMapper | None = None
-        self._output_clock: TactileOutputClock | None = None
+    _dps_cfg: DPS2015ContactSensorCfg
+    _mapper: TactileTensorMapper | None
+    _output_clock: TactileOutputClock | None
+    _physics_time: float
+
+    def _init_tactile_state(self, cfg: DPS2015ContactSensorCfg) -> None:
+        self._dps_cfg = cfg
+        self._mapper = None
+        self._output_clock = None
         self._physics_time = 0.0
 
     @property
@@ -109,15 +139,15 @@ class DPS2015ContactSensor(PhysXContactSensor):
             raise RuntimeError("Tactile sensor has not been initialized")
         return self._output_clock.latest
 
+    def _sensing_body_pose_w(self) -> tuple[torch.Tensor, torch.Tensor]:
+        """World position and XYZW quaternion of the sensed body, per env."""
+        raise NotImplementedError
+
     def sensor_frame_pose_w(self) -> tuple[torch.Tensor, torch.Tensor]:
         """Return device-frame position and XYZW quaternion for every env."""
         if self._mapper is None:
             raise RuntimeError("Tactile sensor has not been initialized")
-        body_pose = _as_torch(self.body_physx_view.get_transforms()).view(
-            self._num_envs, self.num_sensors, 7
-        )[:, 0]
-        body_pos_w = body_pose[:, :3]
-        body_quat_w = body_pose[:, 3:7]
+        body_pos_w, body_quat_w = self._sensing_body_pose_w()
         local_pos = self._frame_pos_b.expand(self._num_envs, -1)
         local_quat = self._frame_quat_b.expand(self._num_envs, -1)
         sensor_pos_w = body_pos_w + _quat_rotate_xyzw(body_quat_w, local_pos)
@@ -147,12 +177,11 @@ class DPS2015ContactSensor(PhysXContactSensor):
         _, sensor_quat_w = self.sensor_frame_pose_w()
         return _quat_rotate_xyzw(sensor_quat_w, vectors_sensor)
 
-    def reset(
+    def _reset_tactile(
         self,
         env_ids: Sequence[int] | None = None,
         env_mask: wp.array | None = None,
     ) -> None:
-        super().reset(env_ids=env_ids, env_mask=env_mask)
         if self._output_clock is None:
             return
         clock_env_ids: Sequence[int] | torch.Tensor | None = env_ids
@@ -162,14 +191,13 @@ class DPS2015ContactSensor(PhysXContactSensor):
         if clock_env_ids is None:
             self._physics_time = 0.0
 
-    def _initialize_impl(self) -> None:
-        super()._initialize_impl()
+    def _setup_tactile(self, body_path: str) -> None:
         if self.num_sensors != 1:
             raise RuntimeError(
                 "DPS2015ContactSensor must match exactly one fingertip body per "
                 f"environment, got {self.num_sensors}"
             )
-        self._read_sensor_frame_offset()
+        self._read_sensor_frame_offset(body_path)
         self._mapper = TactileTensorMapper(
             device=self.device, fingertip_count=1
         )
@@ -179,9 +207,8 @@ class DPS2015ContactSensor(PhysXContactSensor):
             fingertip_count=1,
         )
 
-    def _read_sensor_frame_offset(self) -> None:
-        body_path = self.body_physx_view.prim_paths[0]
-        frame_path = f"{body_path}/{self.cfg.sensor_frame_prim_name}"
+    def _read_sensor_frame_offset(self, body_path: str) -> None:
+        frame_path = f"{body_path}/{self._dps_cfg.sensor_frame_prim_name}"
         frame_prim = sim_utils.get_current_stage().GetPrimAtPath(frame_path)
         if not frame_prim.IsValid():
             raise RuntimeError(
@@ -203,12 +230,13 @@ class DPS2015ContactSensor(PhysXContactSensor):
         )
         self._frame_quat_b /= torch.linalg.vector_norm(self._frame_quat_b)
 
-    def _update_buffers_impl(self, env_mask: wp.array | None = None) -> None:
-        super()._update_buffers_impl(env_mask)
-        if self._mapper is None or self._output_clock is None:
-            return
-
-        positions_w, forces_w, env_ids = self._read_point_contacts()
+    def _publish_contacts(
+        self,
+        positions_w: torch.Tensor,
+        forces_w: torch.Tensor,
+        env_ids: torch.Tensor,
+    ) -> None:
+        """Map world-frame contact points into taxels and advance the clock."""
         if positions_w.numel():
             positions_sensor, forces_sensor = self._world_to_sensor(
                 positions_w, forces_w, env_ids
@@ -241,6 +269,71 @@ class DPS2015ContactSensor(PhysXContactSensor):
             physics_dt=self._sim_physics_dt,
             simulation_time=self._physics_time,
         )
+
+    def _align_force_sign(
+        self,
+        forces_w: torch.Tensor,
+        env_ids: torch.Tensor,
+        target_force_w: torch.Tensor,
+    ) -> torch.Tensor:
+        summed = torch.zeros(
+            (self._num_envs, 3), dtype=forces_w.dtype, device=self.device
+        )
+        summed.index_add_(0, env_ids, forces_w)
+        flip = (summed * target_force_w).sum(dim=1) < 0.0
+        sign = torch.where(flip, -1.0, 1.0).to(forces_w.dtype)
+        return forces_w * sign[env_ids, None]
+
+    def _world_to_sensor(
+        self,
+        positions_w: torch.Tensor,
+        forces_w: torch.Tensor,
+        env_ids: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        sensor_pos_w, sensor_quat_w = self.sensor_frame_pose_w()
+        selected_pos = sensor_pos_w[env_ids]
+        selected_quat = sensor_quat_w[env_ids]
+        positions_sensor = _quat_rotate_inverse_xyzw(
+            selected_quat, positions_w - selected_pos
+        )
+        forces_sensor = _quat_rotate_inverse_xyzw(selected_quat, forces_w)
+        forces_sensor[:, 2] *= float(self._dps_cfg.normal_force_sign)
+        return positions_sensor, forces_sensor
+
+
+class DPS2015PhysXContactSensor(DPS2015TactileCore, PhysXContactSensor):
+    """One-fingertip PhysX contact sensor with a 52-taxel output buffer."""
+
+    cfg: DPS2015ContactSensorCfg
+
+    def __init__(self, cfg: DPS2015ContactSensorCfg) -> None:
+        super().__init__(cfg)
+        self._init_tactile_state(cfg)
+
+    def _sensing_body_pose_w(self) -> tuple[torch.Tensor, torch.Tensor]:
+        body_pose = _as_torch(self.body_physx_view.get_transforms()).view(
+            self._num_envs, self.num_sensors, 7
+        )[:, 0]
+        return body_pose[:, :3], body_pose[:, 3:7]
+
+    def reset(
+        self,
+        env_ids: Sequence[int] | None = None,
+        env_mask: wp.array | None = None,
+    ) -> None:
+        super().reset(env_ids=env_ids, env_mask=env_mask)
+        self._reset_tactile(env_ids, env_mask)
+
+    def _initialize_impl(self) -> None:
+        super()._initialize_impl()
+        self._setup_tactile(self.body_physx_view.prim_paths[0])
+
+    def _update_buffers_impl(self, env_mask: wp.array | None = None) -> None:
+        super()._update_buffers_impl(env_mask)
+        if self._mapper is None or self._output_clock is None:
+            return
+        positions_w, forces_w, env_ids = self._read_point_contacts()
+        self._publish_contacts(positions_w, forces_w, env_ids)
 
     def _read_point_contacts(
         self,
@@ -327,32 +420,19 @@ class DPS2015ContactSensor(PhysXContactSensor):
         env_ids = body_rows // self.num_sensors
         return values_torch.index_select(0, value_indices), env_ids
 
-    def _align_force_sign(
-        self,
-        forces_w: torch.Tensor,
-        env_ids: torch.Tensor,
-        target_force_w: torch.Tensor,
-    ) -> torch.Tensor:
-        summed = torch.zeros(
-            (self._num_envs, 3), dtype=forces_w.dtype, device=self.device
-        )
-        summed.index_add_(0, env_ids, forces_w)
-        flip = (summed * target_force_w).sum(dim=1) < 0.0
-        sign = torch.where(flip, -1.0, 1.0).to(forces_w.dtype)
-        return forces_w * sign[env_ids, None]
 
-    def _world_to_sensor(
-        self,
-        positions_w: torch.Tensor,
-        forces_w: torch.Tensor,
-        env_ids: torch.Tensor,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
-        sensor_pos_w, sensor_quat_w = self.sensor_frame_pose_w()
-        selected_pos = sensor_pos_w[env_ids]
-        selected_quat = sensor_quat_w[env_ids]
-        positions_sensor = _quat_rotate_inverse_xyzw(
-            selected_quat, positions_w - selected_pos
-        )
-        forces_sensor = _quat_rotate_inverse_xyzw(selected_quat, forces_w)
-        forces_sensor[:, 2] *= float(self.cfg.normal_force_sign)
-        return positions_sensor, forces_sensor
+class DPS2015ContactSensor:
+    """Factory: builds the fingertip sensor for the active physics backend.
+
+    The scene config names this class as ``class_type``; instantiating it
+    returns a :class:`DPS2015PhysXContactSensor` or a
+    :class:`DPS2015NewtonContactSensor`, both subclasses of
+    :class:`DPS2015TactileCore`.
+    """
+
+    def __new__(cls, cfg: DPS2015ContactSensorCfg):
+        if active_physics_backend() == "newton":
+            from .tactile_contact_sensor_newton import DPS2015NewtonContactSensor
+
+            return DPS2015NewtonContactSensor(cfg)
+        return DPS2015PhysXContactSensor(cfg)

@@ -1,0 +1,58 @@
+#usda 1.0
+(
+    defaultPrim = "Robot"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+# so101_tactile.usda with the two tactile-mount adapter colliders switched
+# off.  Newton's USD importer approximates their convexDecomposition with a
+# single CoACD hull (threshold 0.5) that fills the pocket the pad sits in and
+# hits the ball before the pad does; PhysX keeps a faithful decomposition.
+# This layer lets both backends run the grasp with identical collision sets
+# (pads, motors, arm links) while the adapter meshes still render.
+def Xform "Robot" (
+    prepend references = @./so101_tactile.usda@</Robot>
+)
+{
+    over "Geometry"
+    {
+        over "base_link"
+        {
+            over "shoulder_link"
+            {
+                over "upper_arm_link"
+                {
+                    over "lower_arm_link"
+                    {
+                        over "wrist_link"
+                        {
+                            over "gripper_link"
+                            {
+                                over "TactileCadAdapter"
+                                {
+                                    over "AdapterCollision" (
+                                        active = false
+                                    )
+                                    {
+                                    }
+                                }
+                                over "moving_jaw_so101_v1_link"
+                                {
+                                    over "TactileCadAdapter"
+                                    {
+                                        over "AdapterCollision" (
+                                            active = false
+                                        )
+                                        {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
